@@ -1,35 +1,19 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Home, Options, Disclaimer, NotFound} from './components/layouts'
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-        
-                         </header>
-        <p className="App-intro">
-        <h1>
-          Welcome to Fit Me Up!
-        </h1>
-        </p>
-        <p> Whether you want to lose weight, gain weight, or just maintain current weight we got you!
-        </p>
-        <div>
-        {/* <img className="img-responsive" src="https://media.giphy.com/media/3o85xunRezGKPOkcG4/giphy.gif" alt="logo"/> */}
-        </div>
-        <div className="theButtons">
-          <span>
-            <button className="loginBtn">Login</button>
-            <button className="RegisterBtn">Register</button>
-          </span>
-        </div>
-        {/* <footer> 
-        <img className="img-food" src="http://www.lisastimmer.com/wp-content/uploads/2016/03/food_new.png" alt="logo"/>
-        </footer>   */}
-
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path = "/" component ={Home}/>
+          <Route path = "/disclaimer" component ={Disclaimer}/>
+          <Route path = "/options" component ={Options}/>
+          <Route component ={NotFound}/>
+        </Switch>  
+      </BrowserRouter>
       
 
     );
