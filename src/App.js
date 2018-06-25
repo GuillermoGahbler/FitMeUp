@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        <a href="#" className="login" id="login">Login</a>
+        
                          </header>
         <p className="App-intro">
         <h1>
@@ -17,7 +17,7 @@ class App extends Component {
         <p> Whether you want to lose weight, gain weight, or just maintain current weight we got you!
         </p>
         <div>
-        <img className="img-responsive" src="https://media.giphy.com/media/3o85xunRezGKPOkcG4/giphy.gif" alt="logo"/>
+        {/* <img className="img-responsive" src="https://media.giphy.com/media/3o85xunRezGKPOkcG4/giphy.gif" alt="logo"/> */}
         </div>
         <div className="theButtons">
           <span>
@@ -25,6 +25,10 @@ class App extends Component {
             <button className="RegisterBtn">Register</button>
           </span>
         </div>
+        {/* <footer> 
+        <img className="img-food" src="http://www.lisastimmer.com/wp-content/uploads/2016/03/food_new.png" alt="logo"/>
+        </footer>   */}
+
       </div>
       
 

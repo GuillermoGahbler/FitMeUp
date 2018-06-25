@@ -1,10 +1,21 @@
+body {
+  /* background-color: black; */
+  background: black url("http://backgroundcheckall.com/wp-content/uploads/2017/12/background-gym-6.jpg") no-repeat fixed center; 
+  background-size: 100%; 
+}
+
+
 .App {
   text-align: center;
+  color:white;
+  font-weight: bolder;
+ 
+  
 }
 
 
 .App-header {
-  text-align: right;
+  
   padding-top: 2%;
   padding-right: 8%;
 }
@@ -13,13 +24,23 @@
  
 
 .loginBtn {
-margin: 2% ; 
-padding: 2%;
-width: 10%
+margin: 1% ; 
+padding: 1%;
+width: 10%;
+font-size: 20px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 .RegisterBtn{
-  margin: 2% ; 
-  padding: 2%;
-  width: 10%
+  margin: 1% ; 
+  padding: 1%;
+  width: 10%;
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .img-food{
+    align-content: center;
+    width: 50%;;
   }
