@@ -11,9 +11,9 @@ const Home = () => {
           Welcome to Fit Me Up!
         </h1>
         </p>
-        <p> Your nutritional intake and exercise spotter to help you achieve your goals for losing, gaining, or just maintaining weight. 
+        <p>Your nutritional intake and exercise spotter to help you achieve your goals for losing, gaining, or maintaining weight. 
         <br/>
-        Which ever you chose we got you!
+        Whichever you choose, we got you!
         </p>
         <div>
         {/* <img className="img-responsive" src="https://media.giphy.com/media/3o85xunRezGKPOkcG4/giphy.gif" alt="logo"/> */}
