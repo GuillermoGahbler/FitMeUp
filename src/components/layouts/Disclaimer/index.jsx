@@ -15,7 +15,7 @@ const Disclaimer = () =>{
     
     </p>
     <div className='disclaimer'>
-    <p> Before using this or any other fitness app you should consult your physician or other health care professional to determine if it is right for your needs. This site is designed as a tool only, do not rely on this information as a substitute, nor should it replace professional medical advice, diagnosis, or treatment by proceeding you do so at your own risk. With that out of the way let's get started with Fit Me (you) Up!
+    <p> Before using this or any other fitness app, you should consult your physician or other health care professional to determine if it is right for your needs. This site is designed as a tool only! Do not rely on this information as a substitute, nor should it replace professional medical advice, diagnosis, or treatment. By proceeding you do so at your own risk. With that out of the way let's get started with Fit Me (you) Up!
     </p>
     </div>
     <div>
