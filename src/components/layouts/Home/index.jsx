@@ -5,7 +5,7 @@ const Home = () => {
 <div className="App">
         <header className="App-header">
         
-                         </header>
+        </header>
         <p className="App-intro">
         <h1>
           Welcome to Fit Me Up!
@@ -21,11 +21,13 @@ const Home = () => {
         <div className="theButtons">
           <span>
             <button className="loginBtn">Login</button>
+            <a href="disclaimer">
             <button className="RegisterBtn">Register</button>
+            </a>
           </span>
         </div>
         <footer> 
-        {/* <img className="img-responsive" src="https://media.giphy.com/media/3o85xunRezGKPOkcG4/giphy.gif" alt="logo"/> */}
+        <a href="About">About</a>
         </footer>  
 
       </div>
