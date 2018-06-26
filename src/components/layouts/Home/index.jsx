@@ -27,7 +27,7 @@ const Home = () => {
           </span>
         </div>
         <footer> 
-        <a href="About">About</a>
+        <p>under construction</p>
         </footer>  
 
       </div>
