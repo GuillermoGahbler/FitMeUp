@@ -40,7 +40,13 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 
-  .img-food{
-    align-content: center;
-    width: 50%;;
+   
+  .disclaimer{
+    width: 40%;
+    margin: auto;
+    
+  }
+
+  .img-giphy{
+    width: 25%
   }
