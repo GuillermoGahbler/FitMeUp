@@ -9,28 +9,14 @@ body {
   text-align: center;
   color:white;
   font-weight: bolder;
- 
-  
 }
 
 
 .App-header {
-  
   padding-top: 2%;
   padding-right: 8%;
 }
  
- 
- 
-
-.loginBtn {
-margin: 1% ; 
-padding: 1%;
-width: 10%;
-font-size: 20px;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-}
 
 .RegisterBtn{
   margin: 1% ; 
@@ -49,4 +35,10 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
   .img-giphy{
     width: 25%
+  }
+
+  .oauth{
+    /* background-color: red; */
+    width: 40%;
+    margin: auto;
   }
