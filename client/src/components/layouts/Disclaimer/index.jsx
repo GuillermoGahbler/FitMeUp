@@ -6,16 +6,16 @@ const Disclaimer = () =>{
     <header className="App-header">
     
                      </header>
-    <p className="App-intro">
+    <div className="App-intro">
     
     <h1>DISCLAIMER</h1>
     <h2>
     The ugly but important stuff 
     </h2>
     
-    </p>
+    </div>
     <div className='disclaimer'>
-    <p> Before using this or any other fitness app, you should consult your physician or other health care professional to determine if it is right for your needs. This site is designed as a tool only! Do not rely on this information as a substitute, nor should it replace professional medical advice, diagnosis, or treatment. By proceeding you do so at your own risk. With that out of the way let's get started with Fit Me (you) Up!
+    <p> Fit me up is not intended for children, pregnant or nursing individuals. Before using this or any other fitness app, you should consult your physician or other health care professional to determine if it is right for your needs. This site is designed as a tool only! Do not rely on this information as a substitute, nor should it replace professional medical advice, diagnosis, or treatment. By proceeding you do so at your own risk. With that out of the way let's get started with Fit Me (you) Up!
     </p>
     </div>
     <div>
