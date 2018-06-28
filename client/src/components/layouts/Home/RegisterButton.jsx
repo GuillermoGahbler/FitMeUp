@@ -5,7 +5,7 @@ const RegisterButton = (props) => {
       <button className="RegisterBtn"
       onClick={props.handleClick}
       >
-        Register
+        Let's get started
       </button>
     </div>
   );
