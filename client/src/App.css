@@ -31,14 +31,27 @@ body {
     width: 40%;
     margin: auto;
     
+    
   }
 
   .img-giphy{
-    width: 25%
+    width: 25%;
+    border-radius: 10%;
   }
 
   .oauth{
     /* background-color: red; */
     width: 40%;
     margin: auto;
+  }
+
+  .social, img{
+    width: 35%;
+    background-color:transparent; 
+    border-color:transparent;
+    
+  }
+
+  .optionsPage{
+    color: white;
   }
