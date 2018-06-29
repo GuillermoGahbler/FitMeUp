@@ -29,7 +29,10 @@ class Home extends React.Component {
         <p>
           Whichever you choose, we got you!
           </p>
-
+          <hr />
+        <p>Note: source material for Fit Me Up's calorie formulas is "Eating to Win" by Israel Thomas Narvaez. For more information and to buy the e-book, visit 
+          <a href="http://www.powerliftingtowin.com/" target="_blank">PowerliftingToWin.com</a>. The e-book is an excellent adjunct to Fit Me Up.
+          </p>
         <div>
           {
             !this.state.isClicked && 
