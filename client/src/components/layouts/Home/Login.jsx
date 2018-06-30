@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import "./Login.css";
 
 
 const Login = ()=>{
@@ -27,12 +28,12 @@ return (
     <form className='signInForm'>
       <h2>Sign up or Log In</h2>
       <div className='form-group'>
-        <label htmlFor='email'>Email address</label>
+        <label htmlFor='email'>Email address: </label>
         <input type='email' className='form-control'
           name='email' />
       </div>
       <div className='form-group'>
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password'>Password: </label>
         <input type='password' className='form-control'
           name='password' />
       </div>
