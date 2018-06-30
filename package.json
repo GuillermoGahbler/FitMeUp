@@ -26,20 +26,9 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0"
   },
-<<<<<<< HEAD
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "concurrently": "^3.6.0",
-=======
   "devDependencies": {
     "concurrently": "^3.6.0",
     "dotenv": "^6.0.0",
->>>>>>> a3bdffa8e8392c3a375c2c8723ec51135f64da94
     "nodemon": "^1.17.5"
   }
 }
