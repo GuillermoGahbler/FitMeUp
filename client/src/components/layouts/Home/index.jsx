@@ -1,6 +1,7 @@
 import React from 'react';
 import RegisterButton from './RegisterButton';
 import Login from './Login';
+import UserForm from '../../UserForm/UserForm';
 import "./index.css";
 
 class Home extends React.Component {
@@ -47,6 +48,10 @@ class Home extends React.Component {
             this.state.isClicked && <Login />
 
           }
+        </div>
+
+        <div>
+            <UserForm />
         </div>
         <footer>
 
