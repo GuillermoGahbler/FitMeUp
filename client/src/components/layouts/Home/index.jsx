@@ -1,8 +1,6 @@
 import React from 'react';
 import RegisterButton from './RegisterButton';
 import Login from './Login';
-import UserForm from '../../UserForm/UserForm';
-import WeeklyCharts from '../../WeeklyCharts/WeeklyCharts';
 import "./index.css";
 
 class Home extends React.Component {
@@ -51,16 +49,7 @@ class Home extends React.Component {
           }
         </div>
 
-        <div>
-            <UserForm />
-        </div>
-        <div>
-          <WeeklyCharts />
-          </div>
-        <footer>
-
-        </footer>
-
+  
       </div>
     )
   }
