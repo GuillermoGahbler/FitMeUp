@@ -33,7 +33,7 @@ class UserForm extends Component {
     return (
       <form>
         <DatePicker name="Date"
-          selected={this.state.startDate}
+          selected={moment(this.state.startDate)}
           onChange={this.handleChange}
         />
         <p>Date</p>
@@ -50,19 +50,19 @@ class UserForm extends Component {
         <p>-----Or-----</p>
 
         <Input
-          // onChange={this.handleChange}
+          onChange={this.handleChange}
           name="Protein"
           placeholder="Protein (g)"
         />
 
         <Input
-          // onChange={this.handleChange}
+          onChange={this.handleChange}
           name="Carbohydrates"
           placeholder="Carbohydrates (g)"
         />
 
         <Input
-          // onChange={this.handleChange}
+          onChange={this.handleChange}
           name="Fats"
           placeholder="Fats (g)"
         />
