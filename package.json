@@ -25,6 +25,7 @@
     "ajv": "^6.5.1",
     "express": "^4.16.3",
     "moment": "^2.22.2",
+    "mysql2": "^1.5.3",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "proptypes": "^1.1.0",
@@ -34,7 +35,8 @@
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "react-svg-piechart": "^2.1.1"
+    "react-svg-piechart": "^2.1.1",
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
     "concurrently": "^3.6.0",
