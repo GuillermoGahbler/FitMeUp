@@ -1,15 +1,14 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import "./Login.css";
 
 
 const Login = ()=>{
 
-const authByGoogle =()=>{
-  axios.get('http://localhost:3001/auth/google')
-  .then(response=>console.log(response.data))
- 
-}
+// const authByGoogle =()=>{
+//   axios.get('http://localhost:3001/auth/google')
+//   .then(response=>console.log(response.data))
+// }
 
 return (
   <div className='oauth'>

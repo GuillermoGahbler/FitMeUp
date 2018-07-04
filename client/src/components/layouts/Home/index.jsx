@@ -1,7 +1,6 @@
 import React from 'react';
 import RegisterButton from './RegisterButton';
 import Login from './Login';
-import UserForm from '../../UserForm/UserForm';
 import "./index.css";
 
 class Home extends React.Component {
@@ -36,7 +35,7 @@ class Home extends React.Component {
           </p>
         <p>by Israel Thomas Narvaez. For more information and to buy the e-book, visit
           </p>
-        <p><a href="http://www.powerliftingtowin.com/" target="_blank">PowerliftingToWin.com</a>. The e-book is an excellent companion to Fit Me Up.
+        <p><a href="http://www.powerliftingtowin.com/" target="_blank" rel="noopener noreferrer">PowerliftingToWin.com</a>. The e-book is an excellent companion to Fit Me Up.
           </p>
         <div>
           {
@@ -50,13 +49,7 @@ class Home extends React.Component {
           }
         </div>
 
-        <div>
-            <UserForm />
-        </div>
-        <footer>
-
-        </footer>
-
+  
       </div>
     )
   }
