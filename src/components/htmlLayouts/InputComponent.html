@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Input Component</title>
+    <style>
+        fieldset {
+            width: 50px;
+        }
+
+        .submit {
+            background-color: green;
+            color: white;
+            padding: 20px 60px 20px 60px;
+        }
+
+        .clearAll {
+            background-color: red;
+            color: white;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <br>
+        <div class="dateInput">
+            <input type="date" id="calendar" name="calendarInput"/>
+            <label for="enterDate">Date</label>
+        </div>
+        <p>-----Enter-----</p>
+        <div class="caloriesInput">
+            <input type="number" id="calories" name="caloriesInput">
+            <label for="enterCalories">Calories</label>
+        </div>
+        <p>-----Or-----</p>
+        <div class="proteinInput">
+            <input type="number" id="protein" name="proteinInput">
+            <label for="enterProtein">Protein (g)</label>
+        </div>
+        <br>
+        <div class="caloriesInput">
+            <input type="number" id="carbohydrates" name="carbohydratesInput">
+            <label for="enterCarbohydrates">Carbohydrates (g)</label>
+        </div>
+        <br>
+        <div class="caloriesInput">
+            <input type="number" id="fat" name="fatInput">
+            <label for="enterFat">Fat (g)</label>
+        </div>
+        <br>
+        <br>
+        <center>
+            <button class="submit">Submit</button>
+        </center>
+        <br>
+        <br>
+        <center>
+            <button class="clearAll">Clear All Data (WARNING: This erases your entire history)</button>
+        </center>
+
+    </fieldset>
+
+</body>
+
+</html>
