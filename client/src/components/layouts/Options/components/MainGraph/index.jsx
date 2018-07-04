@@ -5,7 +5,7 @@ class IntakeChart extends React.Component {
 
   componentDidMount(){
     let myChart = document.getElementById('myChart').getContext('2d');
-    let intakeChart = new Chart(myChart, {
+    new Chart(myChart, {
       type: 'line',
       data: {
         labels: ['Protein', 'Fat', 'Carbohydrates'],
