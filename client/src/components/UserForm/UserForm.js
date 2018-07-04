@@ -32,7 +32,7 @@ class UserForm extends Component {
               <Col size="md-3">
                 <form>
                   <DatePicker name="Date"
-                    selected={this.state.startDate}
+                    selected={moment(this.state.startDate)}
                     onChange={this.handleChange}
                   />
                   <p>Date</p>
