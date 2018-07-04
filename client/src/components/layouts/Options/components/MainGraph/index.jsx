@@ -27,4 +27,5 @@ class IntakeChart extends React.Component {
   }
 }
 
+
 export default IntakeChart;
