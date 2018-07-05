@@ -10,15 +10,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: false
         },
-        account_id: {
-            allowNull: false,
-            references: {
-                // This is a reference to another model
-                model: Account,
-                // This is the column name of the referenced model
-                key: 'account_id'
-            }
-        },
         calories: {
             type: DataTypes.INTEGER,
             allowNull: true
