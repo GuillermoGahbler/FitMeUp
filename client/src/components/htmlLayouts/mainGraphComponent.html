@@ -5,39 +5,48 @@
   <meta charset="UTF=8">
   <meta name="viewport" content="width=device=width, initial-scale=1.0">
   <title>Line Graph</title>
-  
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
 
 <body>
   <div class="container">
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart" width="300" height="300"></canvas>
   </div>
 
-  
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
   <script>
-    let myChart = document.getElementById('myChart').getContext('2d');
+    let ctx = document.getElementById('myChart').getContext('2d');
 
-    let intakeChart = new Chart(myChart, {
+    let intakeChart = new Chart(ctx, {
       type: 'line',
-      data: {
-        labels: ['Protein', 'Fat', 'Carbohydrates'],
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         datasets: [{
-          label: 'grams',
-          data: [
-            80,
-            75,
-            150,
-            570,
-            160,
-            210,
-            50
-          ]
-        }]
-      },
-      options: {}
-    });
+            label: 'Weight',
+            data: [170, 171, 173, 172, 172, 173, 172, 175, 173, 173, 172, 173],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                
+            ],
+            borderWidth: 1
+        }],
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
+                }
+            }]
+        }
+    }
+});
   </script>
 </body>
 
