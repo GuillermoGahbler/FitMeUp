@@ -2,9 +2,9 @@
 var db = require("../models");
 
 module.exports = function(app) {
-    app.get('/accounts',function(req,res){
+    app.get('/account',function(req,res){
         console.log("inside /accounts route");
-        db.Accounts.findAll({
+        db.Account.findAll({
          }).then(function(dbAccount) {
              res.json(dbAccount);
          });
