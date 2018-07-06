@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "haymarMySql2018",
+    "password": "root",
     "database": "fit_me_up",
     "host": "localhost",
     "dialect": "mysql"
