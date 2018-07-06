@@ -10,9 +10,9 @@ const Options = () => {
       <Container>
 
         <Row>
-          <button className="d-flex justify-content-center">text 1</button>
-          <button className="d-flex justify-content-center">text2</button>
-          <button className="d-flex justify-content-center">text3</button>
+          <button className="d-flex justify-content-center">Lose Weight</button>
+          <button className="d-flex justify-content-center">Maintain Weight</button>
+          <button className="d-flex justify-content-center">Gain Weight</button>
         </Row>
 
         <Row className="justify-content-center">
@@ -21,7 +21,7 @@ const Options = () => {
 
         <Row>
 
-          <Col size="md-3">
+          <Col size="md-3" height="300px">
             <UserForm/>
           </Col>
 
