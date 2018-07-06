@@ -1,5 +1,5 @@
 // Requiring our models
-var db = require("../models");
+const db = require("../models");
 
 module.exports = function(app) {
     app.get('/accounts',function(req,res){
