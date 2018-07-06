@@ -11,7 +11,7 @@
 
 <body>
   <div class="container">
-    <canvas id="myChart" width="100" height="100"></canvas>
+    <canvas id="myChart" height="150"></canvas>
   </div>
 
 
@@ -22,10 +22,10 @@
     let intakeChart = new Chart(ctx, {
       type: 'line',
     data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
         datasets: [{
             label: 'Weight',
-            data: [170, 171, 173, 172, 172, 173, 172, 175, 173, 173, 172, 173],
+            data: [170, 171, 173, 172, 172],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 
@@ -38,7 +38,7 @@
         },
         {
             label: 'Body Fat',
-            data: [30, 29, 28, 24, 25, 26, 27, 26, 25, 25, 23, 22],
+            data: [30, 29, 28, 24, 25],
             backgroundColor: [
                 'rgba(155, 1, 132, 0.2)',
                 
