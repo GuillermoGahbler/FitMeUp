@@ -1,0 +1,26 @@
+.container {
+    display: grid inline-grid;
+    /* grid-template-columns: 50px auto auto 50px;
+    grid-template-rows: 10px auto 10px; */
+}
+
+.user-form {
+    /* grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: span 3; */
+}
+
+.main-graph {
+    /* grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: span 3; */
+}
+
+.weekly-charts {
+    /* grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: span 3; */
+}
