@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, Button } from "./components";
 import DatePicker from 'react-datepicker';
+import API from "../../../../../utils/API";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -11,6 +12,7 @@ class UserForm extends Component {
       startDate: moment()
     };
     this.handleChange = this.handleChange.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   handleChange(date) {
@@ -19,11 +21,14 @@ class UserForm extends Component {
     });
   }
 
-  submitForm() {
-    console.log("submit form pressed")
+  submitForm = () => {
+    console.log("submit form pressed");
+    API.getAccounts().then( res => console.log(res));
   }
 
   handleCalorieChange= ()=>{
+    console.log("this.handleCalorieChange");
+    API.getAccounts().then( res => console.log(res));
     this.setState(prevState=>{
       return{ ...prevState,calories:123}
     })
@@ -33,7 +38,7 @@ class UserForm extends Component {
     return (
       <form>
         <DatePicker name="Date"
-          selected={this.state.startDate}
+          selected={moment(this.state.startDate)}
           onChange={this.handleChange}
         />
         <p>Date</p>
@@ -50,24 +55,24 @@ class UserForm extends Component {
         <p>-----Or-----</p>
 
         <Input
-          // onChange={this.handleChange}
+          onChange={this.handleChange}
           name="Protein"
           placeholder="Protein (g)"
         />
 
         <Input
-          // onChange={this.handleChange}
+          onChange={this.handleChange}
           name="Carbohydrates"
           placeholder="Carbohydrates (g)"
         />
 
         <Input
-          // onChange={this.handleChange}
+          onChange={this.handleChange}
           name="Fats"
           placeholder="Fats (g)"
         />
 
-        <Button type='submit' btnColor = {'btn-success'}> Submit</Button>
+        <Button type='submit' onClick={this.submitForm} btnColor = {'btn-success'}> Submit</Button>
         
         <Button type='submit' btnColor = {'btn-danger'}>Clear All Data</Button>
 

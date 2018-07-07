@@ -2,14 +2,16 @@ const express = require('express');
 const server = express();
 const PORT = process.env.PORT || 3001;
 const authRouter = require('./routes/authRoutes');
+const apiRoutes = require('./routes/api-routes');
 const authorization = require ('./authorization');
 const db = require('./models');
 
 server.use(express.static("public"));
-require('./routes/api-routes.js')(server);
+
 server.use(authorization.initialize());
 server.use(authorization.session());
 server.use("/auth", authRouter);
+server.use(apiRoutes);
 
 db.sequelize.sync().then(function () {
   console.log('Database looks ok');
