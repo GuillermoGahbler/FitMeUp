@@ -13,7 +13,7 @@ class UserForm extends Component {
       Protein : 0,
       Carbohydrates : 0,
       Fats: 0,
-      Calories : 0
+      calories : 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -35,16 +35,18 @@ class UserForm extends Component {
 
   submitForm(event) {
     event.preventDefault();
-    console.log("submit form pressed");
+    console.log("submit Form");
     if(this.state.calories){
       console.log("calling API.createDayData");
       API.createDayData( {
-        Calories : this.state.Calories
+        date: this.state.startDate,
+        calories : this.state.calories
       }).then(res => console.log(res));
     }
     else if (this.state.Carbohydrates && this.state.Protein && this.state.Fats) {
       console.log("calling API.calculateCalories");
       API.calculateCalories({
+        date: this.state.startDate,
         carbs : this.state.Carbohydrates,
         protein : this.state.Protein,
         fats : this.state.Fats
@@ -54,12 +56,12 @@ class UserForm extends Component {
 //    API.getAccounts().then( res => console.log(res));
   }
 
-  handleCalorieChange= ()=>{
+  handleCalorieChange= (event)=>{
     console.log("this.handleCalorieChange");
-    API.getAccounts().then( res => console.log(res));
-    this.setState(prevState=>{
-      return{ ...prevState,calories:123}
-    })
+    this.setState({
+      calories : event.target.value
+    });
+    //API.getAccounts().then( res => console.log(res));
   }
 
   render() {
@@ -74,7 +76,7 @@ class UserForm extends Component {
         <div>
           <Input
             onChange={this.handleCalorieChange}
-            name="Calories"
+            name="calories"
             placeholder="Calories (required)"
           />
           <p>Calories</p>

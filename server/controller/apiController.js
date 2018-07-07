@@ -12,15 +12,19 @@ module.exports = {
     createDay : function(req,res) {
         //input will be calories
         console.log("createDay route");
-        console.log(req);
-        //console.log(req.body);
-        console.log(req.params);
-
+        console.log(req.body);
     },
     calculateCalories : function(req,res) {
         //input will be protein,fats,carbs and create calories using those input
         console.log("calculateCalories route");
         console.log(req.body);
+        var fat = req.body.fat * 9;
+        var carbs = req.body.carbs * 4;
+        var protein = req.body.protein * 4;
+        var totalCalories = fat + carbs + protein;
+
+        /*db.Days.create().then(dbDay => res.json(dbDay))
+        .catch(err => res.status(422).json(err));*/
         //console.log(req);
         //console.log(req.body);
 
