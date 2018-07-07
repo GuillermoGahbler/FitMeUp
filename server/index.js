@@ -13,7 +13,6 @@ server.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 server.use(bodyParser.json());
 
-
 server.use(express.static("public"));
 
 server.use(authorization.initialize());
