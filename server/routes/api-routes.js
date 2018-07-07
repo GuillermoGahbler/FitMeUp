@@ -13,5 +13,13 @@ router
   .put(apiController.update)
   .delete(apiController.remove);
 
+router.route("/createDay")
+  .get(apiController.createDay)
+  .post(apiController.createDay);
+router.route("/calculateCalories")
+  .get(apiController.calculateCalories)
+  .post(apiController.calculateCalories);
+
+
 
 module.exports = router;

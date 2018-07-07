@@ -2,15 +2,16 @@ import React from "react";
 
 const Button = props => {
  return (
-  <button 
+  <button {...props}
   style={{ float: "left", marginBottom: 10 }} 
-  className={`btn ${props.btnColor}`}
+  className={`btn ${props.btncolor}`} 
   >
   
   {props.children}
   </button>
    
 );
+
 }
 
 export default Button;

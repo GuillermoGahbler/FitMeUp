@@ -7,6 +7,14 @@ export default {
   },
   getDays: function() {
       return axios.get("/days");
+  },
+  createDayData : function(params) {
+    return axios.get("/createDay",params);
+  },
+  calculateCalories : function(params) {
+    console.log("API.calculateCalories")
+    console.log(params);
+    return axios.post("/calculateCalories",params);
   }
   // Gets the book with the given id
   /*getBook: function(id) {
