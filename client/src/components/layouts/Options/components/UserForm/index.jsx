@@ -12,6 +12,7 @@ class UserForm extends Component {
       startDate: moment()
     };
     this.handleChange = this.handleChange.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   handleChange(date) {
@@ -20,12 +21,14 @@ class UserForm extends Component {
     });
   }
 
-  submitForm() {
-    console.log("submit form pressed")
-    API.getDays();
+  submitForm = () => {
+    console.log("submit form pressed");
+    API.getAccounts().then( res => console.log(res));
   }
 
   handleCalorieChange= ()=>{
+    console.log("this.handleCalorieChange");
+    API.getAccounts().then( res => console.log(res));
     this.setState(prevState=>{
       return{ ...prevState,calories:123}
     })

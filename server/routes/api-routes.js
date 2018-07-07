@@ -1,13 +1,17 @@
-// Requiring our models
-var db = require("../models");
-//const router = require('express').Router();
+const router = require("express").Router();
+const apiController = require("../controller/apiController");
 
-module.exports = function(app) {
-    app.get('/account',function(req,res){
-        console.log("inside /accounts route");
-        db.Account.findAll({
-         }).then(function(dbAccount) {
-             res.json(dbAccount);
-         });
-    });
-};
+// Matches with "/accts"
+router.route("/accts")
+  .get(apiController.getAcct)
+  .post(apiController.create);
+
+// Matches with "/accts/:id"
+router
+  .route("/accts/:id")
+  .get(apiController.findById)
+  .put(apiController.update)
+  .delete(apiController.remove);
+
+
+module.exports = router;
