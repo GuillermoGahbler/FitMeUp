@@ -1,9 +1,9 @@
-if(!process.env.PORT) require('dotenv').config();
+if (!process.env.PORT) require('dotenv').config();
 const passport = require('passport');
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
- 
-// const users = require('../models').users;
- 
+
+const db = require('../models');
+
 
 const GoogleCreds = {
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -11,36 +11,31 @@ const GoogleCreds = {
   callbackURL: process.env.GOOGLE_CB_URL
 }
 
- 
+
 passport.use(new GoogleStrategy(GoogleCreds,
   (accessToken, refreshToken, profile, cb) => {
-    // const searchConditions = {
-    //   $or: [
-    //     { email: profile.emails[0].value},
-    //     { google_id: profile.id.toString() }
-    //   ]
-    // };
+    const searchConditions = {
+      $or: [
+        { email: profile.emails[0].value },
+        { google_id: profile.id.toString() }
+      ]
+    };
 
-    // const newUser = {
-    //   email: profile.emails[0].value,
-    //   google_id: profile.id.toString(),
-    //   username: profile.displayName
-    // }
+    const newUser = {
+      email: profile.emails[0].value,
+      google_id: profile.id.toString(),
+      name: profile.displayName
+    }
 
-    // users
-    //   .findOrCreate({ where: searchConditions, defaults: newUser })
-    //   .spread((user, created) => {
-    //     readings.findAll({ where: { user_id: user.id } })
-    //       .then(data => {
-    //         logged = {user: user, readings: data}
-    //         cb(null, logged)
-    //       })
-    //   })
+    db.Account
+      .findOrCreate({ where: searchConditions, defaults: newUser })
+      .spread((Account, creation) => {
 
-    cb(null,profile)
+        return cb(null, Account)
+      })
   }))
 
- 
+
 passport.serializeUser((user, cb) => cb(null, user));
 passport.deserializeUser((obj, cb) => cb(null, obj));
 
