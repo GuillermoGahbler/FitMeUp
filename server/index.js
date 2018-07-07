@@ -1,10 +1,18 @@
 const express = require('express');
+var bodyParser = require("body-parser");
+
 const server = express();
 const PORT = process.env.PORT || 3001;
 const authRouter = require('./routes/authRoutes');
 const apiRoutes = require('./routes/api-routes');
 const authorization = require ('./authorization');
 const db = require('./models');
+
+// parse application/x-www-form-urlencoded
+server.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
+server.use(bodyParser.json());
+
 
 server.use(express.static("public"));
 
