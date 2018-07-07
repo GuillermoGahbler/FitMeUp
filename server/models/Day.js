@@ -1,11 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     const Day = sequelize.define("Day", {
-        entry_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            unique: true,
-            primaryKey: true
-        },
+        
         date: {
             type: DataTypes.DATE,
             allowNull: false

@@ -1,11 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     const Account = sequelize.define("Account", {
-        account_id: {
-            type: DataTypes.INTEGER(11),
-            allowNull: false,
-            unique: true,
-            primaryKey: true
-        },
+         
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -16,17 +11,17 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             unique: true
         },
-        google_login: {
+        google_id: {
             type: DataTypes.STRING,
             allowNull: false
         },
         height: {
             type: DataTypes.INTEGER,  // height will be converted to inches before being added to the database
-            allowNull: false
+            allowNull: true
         },
         gender: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     });
     Account.associate = function (models) {
