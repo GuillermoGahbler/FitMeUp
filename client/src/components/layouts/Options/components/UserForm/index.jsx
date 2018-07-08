@@ -13,7 +13,7 @@ class UserForm extends Component {
       Protein : 0,
       Carbohydrates : 0,
       Fats: 0,
-      Calories : 0
+      calories : 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -40,7 +40,8 @@ class UserForm extends Component {
     if(this.state.calories){
       console.log("calling API.createDayData");
       API.createDayData( {
-        Calories : this.state.Calories
+        date: this.state.startDate,
+        calories : this.state.calories
       }).then(res => console.log(res));
     }
     else if (this.state.Carbohydrates && this.state.Protein && this.state.Fats) {
@@ -56,11 +57,12 @@ class UserForm extends Component {
 //    API.getAccounts().then( res => console.log(res));
   }
 
-  handleCalorieChange= () =>{
+  handleCalorieChange= (event)=>{
     console.log("this.handleCalorieChange");
-    this.setState(prevState=>{
-      return{ ...prevState, calories: this.state.Calories };
-    })
+    this.setState({
+      calories : event.target.value
+    });
+    //API.getAccounts().then( res => console.log(res));
   }
 
   render() {
@@ -75,7 +77,7 @@ class UserForm extends Component {
         <div>
           <Input
             onChange={this.handleCalorieChange}
-            name="Calories"
+            name="calories"
             placeholder="Calories (required)"
           />
           <p>Calories</p>

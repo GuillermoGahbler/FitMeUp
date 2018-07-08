@@ -9,7 +9,9 @@ export default {
       return axios.get("/days");
   },
   createDayData : function(params) {
-    return axios.get("/createDay",params);
+    console.log("API.createDay")
+    console.log(params);
+    return axios.post("/createDay",params);
   },
   calculateCalories : function(params) {
     console.log("API.calculateCalories")

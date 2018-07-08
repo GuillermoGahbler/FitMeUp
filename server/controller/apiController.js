@@ -12,10 +12,7 @@ module.exports = {
     createDay : function(req,res) {
         //input will be calories
         console.log("createDay route");
-        console.log(req);
-        //console.log(req.body);
-        console.log(req.params);
-
+        console.log(req.body);
     },
     calculateCalories : function(req,res) {
         //input will be protein,fats,carbs and create calories using those input
