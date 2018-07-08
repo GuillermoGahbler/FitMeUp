@@ -35,7 +35,8 @@ class UserForm extends Component {
 
   submitForm(event) {
     event.preventDefault();
-    console.log("submit Form");
+    console.log("submit form pressed");
+    const formattedDate = moment(this.state.date).format("MM-DD-YYYY");
     if(this.state.calories){
       console.log("calling API.createDayData");
       API.createDayData( {
@@ -46,7 +47,7 @@ class UserForm extends Component {
     else if (this.state.Carbohydrates && this.state.Protein && this.state.Fats) {
       console.log("calling API.calculateCalories");
       API.calculateCalories({
-        date: this.state.startDate,
+        date: formattedDate,
         carbs : this.state.Carbohydrates,
         protein : this.state.Protein,
         fats : this.state.Fats
@@ -68,7 +69,7 @@ class UserForm extends Component {
     return (
       <form>
         <DatePicker name="Date"
-          selected={moment(this.state.startDate)}
+          selected={this.state.date}
           onChange={this.handleChange}
         />
         <p>Date</p>
