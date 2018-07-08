@@ -13,6 +13,20 @@ module.exports = {
         //input will be calories
         console.log("createDay route");
         console.log(req.body);
+        var date = req.body.date;
+        var calories = req.body.calories;
+        db.Day.create({
+            date : date,
+            calories :calories,
+            AccountId : 1 //this needs to be replaced with real account number that should come from req.body
+        }).then(function(dbDay) {
+            console.log("day created successfully");
+            res.json(dbDay);
+        })
+        .catch(function(err){
+            console.log("createDay error");
+            res.status(422).json(err);
+        });
     },
     calculateCalories : function(req,res) {
         //input will be protein,fats,carbs and create calories using those input

@@ -5,15 +5,13 @@ import API from "../../../../../utils/API";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
-class UserForm extends Component {
+class UpdateProfile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startDate: moment(),
-      Protein : 0,
-      Carbohydrates : 0,
-      Fats: 0,
-      calories : 0
+      gender : "",
+      height : 0,
+      bodyFat : 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -67,12 +65,7 @@ class UserForm extends Component {
   render() {
     return (
       <form>
-        <DatePicker name="Date"
-          selected={moment(this.state.startDate)}
-          onChange={this.handleChange}
-        />
-        <p>Date</p>
-        <p>-----Enter-----</p>
+        
         <div>
           <Input
             onChange={this.handleCalorieChange}
@@ -104,8 +97,6 @@ class UserForm extends Component {
 
         <Button type='submit' onClick={this.submitForm} btncolor={'btn-success'}> Submit</Button>
         
-        <Button type='submit' btncolor={'btn-danger'}>Clear All Data</Button>
-
 
       </form>
     );
@@ -113,4 +104,4 @@ class UserForm extends Component {
 }
 
 
-export default UserForm;
+export default UpdateProfile;
