@@ -105,7 +105,7 @@ class UserForm extends Component {
 
         <Button type='submit' onClick={this.submitForm} btncolor={'btn-success'}> Submit</Button>
         
-        <Button type='submit' btncolor={'btn-danger'}>Clear All Data</Button>
+        <Button type='submit' btncolor={'btn-primary'}>Clear All Data</Button>
 
 
       </form>
