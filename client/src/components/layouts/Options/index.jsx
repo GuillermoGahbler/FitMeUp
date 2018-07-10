@@ -46,6 +46,7 @@ closeModal =()=>{
           </Col>
 
           <Col size="md-6">
+            
             <MainGraph/>
           </Col>
 
