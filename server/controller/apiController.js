@@ -12,14 +12,20 @@ module.exports = {
     createDay : function(req,res) {
         //input will be calories
         console.log("createDay route");
-        console.log(req);
         console.log(req.body);
+        var date = req.body.date;
+        var calories = req.body.calories;
         db.Day.create({
-            AccountId: 1,
-            date: req.body.date,
-            calories: req.body.calories
-        }).then(function(obj) {
-            console.log(obj);
+            date : date,
+            calories :calories,
+            AccountId : 1 //this needs to be replaced with real account number that should come from req.body
+        }).then(function(dbDay) {
+            console.log("day created successfully");
+            res.json(dbDay);
+        })
+        .catch(function(err){
+            console.log("createDay error");
+            res.status(422).json(err);
         });
     },
     calculateCalories : function(req,res) {
