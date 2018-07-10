@@ -36,7 +36,7 @@ return (
         <input type='password' className='form-control'
           name='password' />
       </div>
-      <button type='submit' className='btn btn-primary'>
+      <button type='submit' className='btn btn-success'>
         Sign up/Login
       </button>
     </form>

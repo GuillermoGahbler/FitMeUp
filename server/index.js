@@ -8,6 +8,15 @@ const apiRoutes = require('./routes/api-routes');
 const authorization = require ('./authorization');
 const db = require('./models');
 
+server.use(function(req,res,next){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-Width, Content-Type, Accept");
+  next();
+})
+
+
+
 // parse application/x-www-form-urlencoded
 server.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
@@ -19,6 +28,8 @@ server.use(authorization.initialize());
 server.use(authorization.session());
 server.use("/auth", authRouter);
 server.use(apiRoutes);
+
+
 
 db.sequelize.sync().then(function () {
   console.log('Database looks ok');

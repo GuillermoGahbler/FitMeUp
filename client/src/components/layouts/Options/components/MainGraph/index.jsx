@@ -1,6 +1,6 @@
 import React from "react";
 import { Chart } from "chart.js"
-import "./style.css"
+// import "./style.css"
 
 class IntakeChart extends React.Component {
 
