@@ -69,7 +69,9 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     update : function(req,res) {
-        console.log("api update");
+      const data = req.body;
+      const where = {where: {id: req.params.id}};
+        db.Account.update(data, where).then(data=>res.send(''))
     },
     remove : function(req,res) {
         console.log("api delete");
