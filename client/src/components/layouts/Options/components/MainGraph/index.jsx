@@ -1,6 +1,6 @@
 import React from "react";
 import { Chart } from "chart.js"
-import "./style.css"
+// import "./style.css"
 
 class IntakeChart extends React.Component {
 
@@ -54,6 +54,11 @@ class IntakeChart extends React.Component {
     return (
       <div className="container">
         <canvas id="myChart"></canvas>
+        <h3>Current Stats</h3>
+        <p>Weight: 180</p>
+        <p>Body fat percentage: 17%</p>
+        <p>Lean body mass: 140</p>
+        <p>Fat mass: 40</p>
       </div>
     );
   }
