@@ -1,35 +1,31 @@
-import { React, Component } from "react";
+import React, { Component } from "react";
 import PieChart from "react-svg-piechart";
 import API from "../../../../../../utils/API";
 
 class MacroPieChart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [
-        { title: "Protein", value: 0, color: "#22594e" },
-        { title: "Carbs", value: 0, color: "#2f7d6d" },
-        { title: "Fat", value: 0, color: "#3da18d" }
-      ]
-    };
-  }
+  state = {
+    data: [
+      { title: "Protein", value: 0, color: "#22594e" },
+      { title: "Carbs", value: 0, color: "#2f7d6d" },
+      { title: "Fat", value: 0, color: "#3da18d" }
+    ]
+  };
 
   componentDidMount() {
     this.loadCalories();
   }
 
   loadCalories = () => {
-    API.getCalorieInfo().then(function (res) {
+    API.getCalorieInfo().then((res) => {
       console.log(res);
       this.setState({
         data: [
           { title: "Protein", value: 0, color: "#22594e" },
           { title: "Carbs", value: 0, color: "#2f7d6d" },
-          { title: "Fat", value: 0 , color: "#3da18d" }          
-
+          { title: "Fat", value: 0, color: "#3da18d" }
         ]
       });
-    });
+    }).catch(err => console.log(err));
   }
 
   render() {

@@ -18,10 +18,9 @@ export default {
     console.log(params);
     return axios.post("/calculateCalories",params);
   },
-  getCalorieInfo : function (params) {
+  getCalorieInfo : function () {
     console.log("API.getCalorieInfo");
-    console.log(params);
-    return axios.get("/getCalorieInfo", params);
+    return axios.get("/getCalorieInfo");
   }
   // Gets the book with the given id
   /*getBook: function(id) {
