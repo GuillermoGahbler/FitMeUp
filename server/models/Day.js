@@ -2,7 +2,7 @@ module.exports = function (sequelize, DataTypes) {
     const Day = sequelize.define("Day", {
         
         date: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false
         },
         calories: {

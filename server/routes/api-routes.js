@@ -21,6 +21,9 @@ router.route("/calculateCalories")
   .get(apiController.calculateCalories)
   .post(apiController.calculateCalories);
 
+router.route("/getCalorieInfo")
+  .get(apiController.getCalorieInfo);
+
 
 
 module.exports = router;

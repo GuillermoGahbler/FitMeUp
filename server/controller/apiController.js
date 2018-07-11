@@ -1,5 +1,6 @@
 // Requiring our models
 var db = require("../models");
+var moment = require("moment");
 
 module.exports = {
     create: function(req, res) {
@@ -13,7 +14,7 @@ module.exports = {
         //input will be calories
         console.log("createDay route");
         console.log(req.body);
-        var date = req.body.date;
+        var date = moment(req.body.date).format("MM-DD-YYYY");
         var calories = req.body.calories;
         db.Day.create({
             date : date,
@@ -36,12 +37,13 @@ module.exports = {
         const proteinCalories = req.body.protein * 4;
         const fatsCalories = req.body.fats * 9;
         const totalCalorieCount = carbsCalories + proteinCalories + fatsCalories;
-        db.Day.findOne({where: {date: req.body.date}})
+        db.Day.find({where: {date: req.body.date}})
         .then(function(obj) {
             console.log(obj);
+            var date = moment(req.body.date).format("MM-DD-YYYY");
             if(obj) {
                 db.Day.update({
-                    date: req.body.date,
+                    date: date,
                     carbs: carbsCalories,
                     protein: proteinCalories,
                     fat: fatsCalories,
@@ -52,7 +54,7 @@ module.exports = {
             } else {
                 db.Day.create({
                     AccountId: 1,
-                    date: req.body.date,
+                    date: date,
                     carbs: carbsCalories,
                     protein: proteinCalories,
                     fat: fatsCalories,
@@ -78,5 +80,9 @@ module.exports = {
     },
     findById : function(req,res) {
         console.log("api findById");
+    },
+    getCalorieInfo : function (req, res) {
+        console.log("get calorie info");
+        db.Day.findOne({ where: { date: moment(Date.now()).format("MM-DD-YYYY") }}).then(data => res.json());
     }
 }
