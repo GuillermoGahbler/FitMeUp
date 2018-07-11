@@ -33,9 +33,7 @@ module.exports = function (sequelize, DataTypes) {
         })
 
         Account.hasMany(models.Day, {
-            foreignKey: {
-                allowNull: false
-            },
+            foreignKey:'account_id',
             onDelete: "cascade"
         })
     };

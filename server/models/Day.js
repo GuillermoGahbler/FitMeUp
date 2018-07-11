@@ -20,15 +20,16 @@ module.exports = function (sequelize, DataTypes) {
         fat: {
             type: DataTypes.INTEGER,
             allowNull: true
+        }, 
+        account_id:{
+          type: DataTypes.INTEGER,
+            allowNull: false
         }
     });
 
     Day.associate = function (models) {
         Day.belongsTo(models.Account, {
-            foreignKey: {
-                allowNull: false
-            }
-        })
+            foreignKey: 'account_id' })
     };
 
     return Day;
