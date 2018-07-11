@@ -3,8 +3,10 @@
 }
 .social, img {
     position: relative;
-    margin: 0 0 0 32px;
+    margin: 0;
     padding: 0;
-    max-width: 150px;
-    max-height: 150px;
+}
+#googleImg {   
+  max-height: 50px;
+  max-width: 50px;
 }

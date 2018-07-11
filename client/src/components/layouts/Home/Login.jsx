@@ -17,7 +17,7 @@ return (
     </p>
     <a href="http://localhost:3001/auth/google">
     <button className='social'>
-      <img src='https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_Google-128.png' alt='google'/>
+      <img id="googleImg" src='https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_Google-128.png' alt='google'/>
     </button>
       </a>
     <p>
