@@ -17,6 +17,14 @@ export default {
     console.log("API.calculateCalories")
     console.log(params);
     return axios.post("/calculateCalories",params);
+  },
+  getNutritionInfo : function(){
+    return axios.get("/getNutritionInfo")
+  },
+  calculateBodyFat : function(params){
+    console.log("API.calculateBodyFat");
+    console.log(params);
+    return axios.put("/calculateBodyFat",params);
   }
   // Gets the book with the given id
   /*getBook: function(id) {

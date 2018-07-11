@@ -15,6 +15,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
+        weight: {
+            type : DataTypes.INTEGER,
+            allowNull : true
+        },
         height: {
             type: DataTypes.INTEGER,  // height will be converted to inches before being added to the database
             allowNull: true
@@ -22,6 +26,10 @@ module.exports = function (sequelize, DataTypes) {
         gender: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        bodyFat : {
+            type: DataTypes.FLOAT,
+            allowNull : true
         }
     });
     Account.associate = function (models) {

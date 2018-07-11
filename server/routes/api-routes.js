@@ -16,10 +16,15 @@ router
 router.route("/createDay")
   .get(apiController.createDay)
   .post(apiController.createDay);
-  
+
 router.route("/calculateCalories")
   .get(apiController.calculateCalories)
   .post(apiController.calculateCalories);
+
+router.route("/getNutritionInfo")
+.get(apiController.getNutritionInfo);
+
+
 
 
 

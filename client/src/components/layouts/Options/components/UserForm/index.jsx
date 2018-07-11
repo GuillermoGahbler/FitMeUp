@@ -37,7 +37,6 @@ class UserForm extends Component {
     event.preventDefault();
     console.log("submit Form");
     const formattedDate = moment(this.state.startDate).format("MM-DD-YYYY");
-
     if(this.state.calories){
       console.log("calling API.createDayData");
       API.createDayData( {
