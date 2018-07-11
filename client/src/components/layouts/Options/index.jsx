@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import {
   Col, Container, Row, WeeklyCharts, UserForm,Error,MainGraph, LoseWeight
@@ -8,13 +9,34 @@ class Options extends React.Component {
   state = {
     loseWeight: false,
     maintainWeight: false,
-    gainWeight:false
+    gainWeight:false,
+    lastUpdate : 0
   }
 
 closeModal =()=>{
   this.setState(prevState =>{
     return {...prevState,loseWeight:!prevState.loseWeight}
   })
+}
+
+lastUpdate = () => {
+  console.log("last update");
+  axios.get(`http://localhost:3001${this.props.location.pathname}`)
+      .then(res => {
+        console.log("updatedAt");
+        console.log(res.data.updatedAt);
+        
+        let dateDiff = Math.floor((Date.now() - Date.parse(res.data.updatedAt))/(1000*60*60*24));
+        console.log("dateDiff : " + dateDiff);
+        this.setState({
+          lastUpdate : dateDiff
+        });
+      })
+      .catch(err => console.log(err))
+}
+
+componentDidMount() {
+  this.lastUpdate();
 }
 
 
@@ -57,7 +79,7 @@ closeModal =()=>{
         </Row>
 
       </Container>
-  {this.state.loseWeight && <LoseWeight
+  {(this.state.loseWeight || this.state.lastUpdate > 7)&& <LoseWeight
   closeModal = {this.closeModal}
   url={this.props.location.pathname}
 />}

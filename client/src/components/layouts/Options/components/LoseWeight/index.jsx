@@ -39,7 +39,6 @@ class LoseWeight extends React.Component {
     data.bodyFat = this.state.bodyFat;
     
     console.log(data);
-    console.log("this.props.url: " + this.props.url);
     axios.put(`http://localhost:3001${this.props.url}`, data)
       .then(res => this.props.closeModal())
       .catch(err => console.log(err))

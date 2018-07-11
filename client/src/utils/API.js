@@ -21,10 +21,10 @@ export default {
   getNutritionInfo : function(){
     return axios.get("/getNutritionInfo")
   },
-  calculateBodyFat : function(params){
-    console.log("API.calculateBodyFat");
+  calculateLastUpdate : function(params) {
+    console.log("API.calculateLastUpdate");
     console.log(params);
-    return axios.put("/calculateBodyFat",params);
+    return axios.get("/calculateLastUpdate",params);
   }
   // Gets the book with the given id
   /*getBook: function(id) {

@@ -24,4 +24,7 @@ router.route("/calculateCalories")
 router.route("/getNutritionInfo")
 .get(apiController.getNutritionInfo);
 
+router.route("/calculateLastUpdate")
+.get(apiController.calculateLastUpdate);
+
 module.exports = router;

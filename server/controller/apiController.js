@@ -102,6 +102,11 @@ module.exports = {
         console.log("calculated body fat %: " + data.bodyFat);
     }   
         db.Account.update(data, where).then(data=>res.json(data));
+
+        //also needs to update db.Weeks with this entry
+        //db.Week.create( {
+        //    where : {AccountId : req.params.id}
+        //}).then(data => res.json(data));
     },
     remove : function(req,res) {
         console.log("api delete");
@@ -110,5 +115,13 @@ module.exports = {
         console.log("api findById");
         db.Account.findOne({ where : {id: req.params.id} }).then(dbAccount => res.json(dbAccount ))
         .catch(err => res.status(422).json(err));
-    }
+    },
+    calculateLastUpdate : function(req,res){
+        console.log("calculateLastUpdate");
+        console.log(req.body);
+        db.Account.findOne({where : {id : 1} } ,
+           { attributes : ['DateDiff(NOW,createdAt)'] }
+        ).then(datediff => res.json(datediff))
+        .catch(err => res.status(422).json(err));
+    },
 }
