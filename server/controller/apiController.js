@@ -32,16 +32,36 @@ module.exports = {
         //input will be protein,fats,carbs and create calories using those input
         console.log("calculateCalories route");
         console.log(req.body);
-        var fat = req.body.fat * 9;
-        var carbs = req.body.carbs * 4;
-        var protein = req.body.protein * 4;
-        var totalCalories = fat + carbs + protein;
-
-        /*db.Days.create().then(dbDay => res.json(dbDay))
-        .catch(err => res.status(422).json(err));*/
-        //console.log(req);
-        //console.log(req.body);
-
+        const carbsCalories = req.body.carbs * 4;
+        const proteinCalories = req.body.protein * 4;
+        const fatsCalories = req.body.fats * 9;
+        const totalCalorieCount = carbsCalories + proteinCalories + fatsCalories;
+        db.Day.findOne({where: {date: req.body.date}})
+        .then(function(obj) {
+            console.log(obj);
+            if(obj) {
+                db.Day.update({
+                    date: req.body.date,
+                    carbs: carbsCalories,
+                    protein: proteinCalories,
+                    fat: fatsCalories,
+                    calories: totalCalorieCount
+                }).success(function(obj) {
+                    console.log(obj);
+                });
+            } else {
+                db.Day.create({
+                    AccountId: 1,
+                    date: req.body.date,
+                    carbs: carbsCalories,
+                    protein: proteinCalories,
+                    fat: fatsCalories,
+                    calories: totalCalorieCount
+                }).then(function (obj){
+                    console.log(obj);
+                })
+            }
+        })
     },
     getAcct : function(req,res) {
         console.log("getAcct route");
@@ -49,7 +69,9 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     update : function(req,res) {
-        console.log("api update");
+      const data = req.body;
+      const where = {where: {id: req.params.id}};
+        db.Account.update(data, where).then(data=>res.send(''))
     },
     remove : function(req,res) {
         console.log("api delete");

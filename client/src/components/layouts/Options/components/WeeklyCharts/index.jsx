@@ -8,6 +8,7 @@ const WeeklyCharts = () => {
       <h3>This week:</h3>
       <p>Daily calorie target: 2200</p>
       <p>Average daily calories: 2230</p>
+      <p>Deviation: 1.45% OPTIMAL</p>
       <CalorieBarChart />
       <MacroPieChart />
     </div>

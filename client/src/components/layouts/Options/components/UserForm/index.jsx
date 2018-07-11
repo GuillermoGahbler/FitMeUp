@@ -37,6 +37,7 @@ class UserForm extends Component {
     event.preventDefault();
     console.log("submit Form");
     const formattedDate = moment(this.state.startDate).format("MM-DD-YYYY");
+
     if(this.state.calories){
       console.log("calling API.createDayData");
       API.createDayData( {
@@ -68,7 +69,7 @@ class UserForm extends Component {
     return (
       <form>
         <DatePicker name="Date"
-          selected={moment(this.state.startDate)}
+          selected={this.state.date}
           onChange={this.handleChange}
         />
         <p>Date</p>
@@ -104,7 +105,7 @@ class UserForm extends Component {
 
         <Button type='submit' onClick={this.submitForm} btncolor={'btn-success'}> Submit</Button>
         
-        <Button type='submit' btncolor={'btn-danger'}>Clear All Data</Button>
+        <Button type='submit' btncolor={'btn-primary'}>Clear All Data</Button>
 
 
       </form>
