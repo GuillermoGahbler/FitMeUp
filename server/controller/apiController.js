@@ -83,7 +83,7 @@ module.exports = {
     },
     getAcct : function(req,res) {
         console.log("getAcct route");
-        db.Account.findAll({ }).then(dbAccount => res.json(dbAccount ))
+        db.Account.findOne({ where : {id: req.params.id} }).then(dbAccount => res.json(dbAccount ))
         .catch(err => res.status(422).json(err));
     },
     update : function(req,res) {
@@ -108,5 +108,7 @@ module.exports = {
     },
     findById : function(req,res) {
         console.log("api findById");
+        db.Account.findOne({ where : {id: req.params.id} }).then(dbAccount => res.json(dbAccount ))
+        .catch(err => res.status(422).json(err));
     }
 }

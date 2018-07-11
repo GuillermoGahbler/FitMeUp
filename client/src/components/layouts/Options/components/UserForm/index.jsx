@@ -61,7 +61,6 @@ class UserForm extends Component {
     this.setState({
       calories : event.target.value
     });
-    //API.getAccounts().then( res => console.log(res));
   }
 
   render() {

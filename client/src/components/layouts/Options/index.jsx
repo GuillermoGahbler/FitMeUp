@@ -47,11 +47,11 @@ closeModal =()=>{
 
           <Col size="md-6">
             
-            <MainGraph/>
+            <MainGraph url={this.props.location.pathname}/>
           </Col>
 
           <Col size="md-3">
-            <WeeklyCharts />
+            <WeeklyCharts url={this.props.location.pathname}/>
           </Col>
 
         </Row>
