@@ -2,6 +2,7 @@ import React from 'react';
 import RegisterButton from './RegisterButton';
 import Login from './Login';
 import "./index.css";
+import logo from "../fitmeuplogo2.png";
 
 class Home extends React.Component {
   state = {
@@ -21,8 +22,9 @@ class Home extends React.Component {
         <header className="App-header"></header>
         <div className="App-intro">
           <h1>
-            Welcome to Fit Me Up!
+            Welcome to
           </h1>
+          <img className="mainLogo" src={logo} alt="logo" />
         </div>
         <p>
           Your nutritional intake and exercise spotter to help you achieve your goals for losing, gaining, or maintaining weight.
@@ -49,7 +51,7 @@ class Home extends React.Component {
           }
         </div>
 
-  
+
       </div>
     )
   }
