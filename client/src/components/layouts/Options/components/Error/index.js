@@ -7,7 +7,7 @@ const Error = ({message}) => {
   return (
     <div>
        <div className="missingDayComponent">
-            <img className = {styles.img} src={Warning} alt="warning" width="30px"/>
+            <img id="errorImg" className = {styles.img} src={Warning} alt="warning" width="30px"/>
             <p className={styles.p}>{message}</p>
         </div>
         

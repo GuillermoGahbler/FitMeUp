@@ -27,7 +27,7 @@ class Home extends React.Component {
           <img className="mainLogo" src={logo} alt="logo" />
         </div>
         <p>
-          Your nutritional intake and exercise spotter to help you achieve your goals for losing, gaining, or maintaining weight.
+          Your nutritional intake spotter to help you achieve your goals for losing, gaining, or maintaining weight.
           </p>
         <p>
           Whichever you choose, we got you!
