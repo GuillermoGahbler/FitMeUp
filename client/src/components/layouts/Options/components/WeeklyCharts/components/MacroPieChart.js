@@ -15,9 +15,9 @@ const MacroPieChart = () => (
     // If you need custom behavior when sector is hovered (or touched)
     onSectorHover={(d, i, e) => {
       if (d) {
-        console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+        // console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
       } else {
-        console.log("Mouse leave - Index:", i, "Event:", e)
+        // console.log("Mouse leave - Index:", i, "Event:", e)
       }
     }
   }

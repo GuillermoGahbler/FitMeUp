@@ -47,15 +47,13 @@ componentDidMount() {
 
         <Row>
           <button 
-          className="d-flex justify-content-center"
+          className="d-flex justify-content-center btn btn-info"
           onClick={this.closeModal}
-          >Lose Weight
+          >Enter Current Stats
           </button>
           
           
-          <button className="d-flex justify-content-center">Maintain Weight</button>
-          <button className="d-flex justify-content-center">Gain Weight</button>
-        </Row>
+                   </Row>
 
         <Row className="justify-content-center">
           <Error message = {"This is an error"}/>
