@@ -67,7 +67,7 @@ class UserForm extends Component {
     return (
       <form>
         <DatePicker name="Date"
-          selected={this.state.date}
+          selected={this.state.startDate}
           onChange={this.handleChange}
         />
         <p>Date</p>
