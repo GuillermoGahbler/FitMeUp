@@ -2,7 +2,7 @@ import React from 'react';
 import RegisterButton from './RegisterButton';
 import Login from './Login';
 import "./index.css";
-import logo from "../fitmeuplogo2.png";
+import logo from "./fitmeuplogo2.png";
 
 class Home extends React.Component {
   state = {

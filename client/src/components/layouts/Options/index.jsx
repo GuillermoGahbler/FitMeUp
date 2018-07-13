@@ -1,36 +1,52 @@
 import React from 'react';
 import axios from 'axios';
-
+// axios helping from end speak to back end
 import {Col, Container, Row, MacroPieChart, CalorieBarChart, UserForm, Error, MainGraph, LoseWeight} from './components';
 
 class Options extends React.Component {
   state = {
-    statsIsClicked: false
+    statsIsClicked: false,
+    days:[]
   }
 
+  //makes two different requests for user information as soon as the compornent mounts
   componentDidMount(){
     const userId = this.props.match.params.id;
-    axios.get(`http://localhost:3001/accts/${userId}`)
-    .then(res=>this.changeState('userStats',res.data))
-    axios.get(`http://localhost:3001/days/${userId}`)
-    .then(res=>this.changeState('days',res.data))
+    this.readAccount(userId);
+    this.readDays(userId);
+    
   }
 
+  readAccount = (id)=>{
+    axios.get(`http://localhost:3001/accts/${id}`)
+    .then(res=>this.changeState('userStats',res.data))
+  }
 
+  readDays = (id) => {
+    axios.get(`http://localhost:3001/days/${id}`)
+    .then(res => this.changeState('days',res.data)) 
+   }
+
+
+//using deconstructor to get the info we want
   changeState = (propName, value)=>{
     this.setState(prevState =>{
       return{...prevState, [propName]:value}
     })
   }
 
+
+  //resets boolean to prev state
   reverseBooleanValue = (propName) => {
     this.setState(prevState => {
       return { ...prevState, [propName]: !prevState[propName] }
     })
   }
 
+  //uses reset bloolean to close the stat container 
   closeStats = () => this.reverseBooleanValue('statsIsClicked')
 
+  
   serializeForm = refs =>{
     return Object.keys(refs).reduce((acc, cv)=>{
       return {...acc, [cv]:refs[cv].value}
@@ -38,20 +54,30 @@ class Options extends React.Component {
   }
   
   updateStats = (stats) =>{
+    const account_id = this.props.match.params.id;
     const userStats = this.serializeForm(stats)
-    console.log(userStats)
+    axios.put(`http://localhost:3001/accts/${account_id}`, userStats)
+    .then(res=>this.readAccount(res.data[0]))
+ 
   }
 
 
   addIntake = (intake) =>{
-     
-    console.log(intake)
+     const id = this.props.match.params.id;
+     const newIntake = {...intake,account_id:id}
+     axios.post('http://localhost:3001/days',newIntake)
+     .then(res => this.readDays(id))
   }
 
 
   getLastDay =()=>{
-    const {first,...allOtherDays}= this.state.days;
+    const [first,...allOtherDays]= this.state.days;
     return first;
+  }
+
+  getAvgCalories = () =>{
+    const totalCal = this.state.days.reduce((acc,day)=> acc + day.calories,0)
+    return Math.floor(totalCal / this.state.days.length);
   }
 
 
@@ -87,11 +113,11 @@ class Options extends React.Component {
             <Col size="md-3">
               <div>
                 <h3>This week:</h3>
-                <p>Daily calorie target: 2200</p>
-                <p>Average daily calories: 2230</p>
-                <p>Deviation: 1.45% OPTIMAL</p>
+                {/* <p>Daily calorie target: 2200</p> */}
+                <p>Average daily calories:{this.getAvgCalories()}</p>
+                {/* <p>Deviation: 1.45% OPTIMAL</p> */}
                 <CalorieBarChart days={this.state.days} />
-                <MacroPieChart currentDay={this.state.LastDay}/>
+                <MacroPieChart currentDay={this.getLastDay}/>
               </div>
             </Col>
 

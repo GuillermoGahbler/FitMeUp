@@ -9,8 +9,23 @@ const getById = (id,cb) =>{
     console.log(user)
     cb(user)
 })
+
 }
+
+ 
+
+const updateAccount = (accountId,data,cb) =>{
+ return Account.update(data,{where:{id:accountId}})
+ .then(updateAccount => cb(updateAccount))
+}
+
+
+
+
+
+
 module.exports = {
-  getById:getById
+  getById:getById, 
+  updateAccount: updateAccount
 
 }

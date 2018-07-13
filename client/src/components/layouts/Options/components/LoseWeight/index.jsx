@@ -7,6 +7,7 @@ class LoseWeight extends React.Component {
   formSubmit = event => {
     event.preventDefault();
     this.props.updateUserStats(this.refs)
+    this.props.closeModal()
   }
 
 

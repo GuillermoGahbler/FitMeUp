@@ -7,7 +7,8 @@ module.exports = function (sequelize, DataTypes) {
         },
         calories: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            // DEFAULT: 0
         },
         protein: {
             type: DataTypes.INTEGER,

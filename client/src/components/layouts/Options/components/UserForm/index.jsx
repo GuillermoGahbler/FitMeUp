@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Input, Button } from "./components";
 import DatePicker from 'react-datepicker';
-import API from "../../../../../utils/API";
+//import API from "../../../../../utils/API"; No longer using because axios
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -17,8 +17,9 @@ class UserForm extends Component {
 
   submitForm = (event) => {
     event.preventDefault();
-    console.log(this.props.children)
-    this.props.enterIntake(this.state)
+    const {fat,protein,carbs,calories,...idc} = this.state;
+    const calcCalories = calories || fat * 9 + 4 * (protein + carbs);
+    this.props.enterIntake({...this.state, calories: calcCalories})
 
   }
 

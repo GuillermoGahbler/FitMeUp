@@ -9,11 +9,26 @@ router
   })
 })
 
+.put('/accts/:id', (req,res,next)=>{
+  accountController
+    .updateAccount(req.params.id,req.body,(updatedAccount)=>{
+      res.json(updatedAccount);
+    })
+})
+
+
 .get('/days/:userId', (req, res, next)=>{
  dayController.getByuserId(req.params.userId, (data)=>{
    res.json(data)
  })
 })
+
+.post('/days',(req,res,next)=>{
+  dayController.create(req.body,(day)=>{
+    res.json(day)
+  })
+})
+
 
 
 
