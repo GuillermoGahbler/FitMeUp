@@ -1,5 +1,6 @@
 // Requiring our models
 var db = require("../models");
+var moment = require("moment");
 
 module.exports = {
     create: function(req, res) {
@@ -28,18 +29,34 @@ module.exports = {
             res.status(422).json(err);
         });
     },
+    getNutritionInfo : function(req,res){
+        console.log("getNutritionInfo route");
+        db.Day.findAll({ 
+            where : { date: moment().format("MM-DD-YYYY") }
+        }, 
+        {
+            attributes: ['protein','carbs','fat'] 
+        },{
+            limit : 1
+        })
+        .then(function(obj){
+            res.json(obj);
+        });
+    },
     calculateCalories : function(req,res) {
         //input will be protein,fats,carbs and create calories using those input
         console.log("calculateCalories route");
-        console.log(req.body);
+        //console.log(req.body);
         const carbsCalories = req.body.carbs * 4;
         const proteinCalories = req.body.protein * 4;
         const fatsCalories = req.body.fats * 9;
         const totalCalorieCount = carbsCalories + proteinCalories + fatsCalories;
+        console.log("totalCalories: " + totalCalorieCount);
         db.Day.findOne({where: {date: req.body.date}})
         .then(function(obj) {
             console.log(obj);
             if(obj) {
+                console.log("found");
                 db.Day.update({
                     date: req.body.date,
                     carbs: carbsCalories,
@@ -50,6 +67,7 @@ module.exports = {
                     console.log(obj);
                 });
             } else {
+                console.log("creating");
                 db.Day.create({
                     AccountId: 1,
                     date: req.body.date,
@@ -65,18 +83,45 @@ module.exports = {
     },
     getAcct : function(req,res) {
         console.log("getAcct route");
-        db.Account.findAll({ }).then(dbAccount => res.json(dbAccount ))
+        db.Account.findOne({ where : {id: req.params.id} }).then(dbAccount => res.json(dbAccount ))
         .catch(err => res.status(422).json(err));
     },
     update : function(req,res) {
+      console.log("apiController.update ");
       const data = req.body;
+      console.log(data);
       const where = {where: {id: req.params.id}};
-        db.Account.update(data, where).then(data=>res.send(''))
+      if(data.bodyFat == null){
+          console.log("need to calculate bodyFat");
+        if(data.gender=="male"){
+            data.bodyFat = (86.01 * Math.log10(parseFloat(data.waist) - parseFloat(data.neck))) - (70.041 * Math.log10(data.height)) + 36.76;
+        }
+        else{
+            data.bodyFat = (163.205 * Math.log10(parseFloat(data.waist) + parseFloat(data.hip) - parseFloat(data.neck)) - 97.684 * Math.log10(data.height) - 78.387);
+        }
+        console.log("calculated body fat %: " + data.bodyFat);
+    }   
+        db.Account.update(data, where).then(data=>res.json(data));
+
+        //also needs to update db.Weeks with this entry
+        //db.Week.create( {
+        //    where : {AccountId : req.params.id}
+        //}).then(data => res.json(data));
     },
     remove : function(req,res) {
         console.log("api delete");
     },
     findById : function(req,res) {
         console.log("api findById");
-    }
+        db.Account.findOne({ where : {id: req.params.id} }).then(dbAccount => res.json(dbAccount ))
+        .catch(err => res.status(422).json(err));
+    },
+    calculateLastUpdate : function(req,res){
+        console.log("calculateLastUpdate");
+        console.log(req.body);
+        db.Account.findOne({where : {id : 1} } ,
+           { attributes : ['DateDiff(NOW,createdAt)'] }
+        ).then(datediff => res.json(datediff))
+        .catch(err => res.status(422).json(err));
+    },
 }
