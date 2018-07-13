@@ -7,7 +7,8 @@ module.exports = function (sequelize, DataTypes) {
         },
         calories: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            // DEFAULT: 0
         },
         protein: {
             type: DataTypes.INTEGER,
@@ -20,15 +21,16 @@ module.exports = function (sequelize, DataTypes) {
         fat: {
             type: DataTypes.INTEGER,
             allowNull: true
+        }, 
+        account_id:{
+          type: DataTypes.INTEGER,
+            allowNull: false
         }
     });
 
     Day.associate = function (models) {
         Day.belongsTo(models.Account, {
-            foreignKey: {
-                allowNull: false
-            }
-        })
+            foreignKey: 'account_id' })
     };
 
     return Day;

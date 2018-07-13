@@ -8,11 +8,11 @@
     "node": "8.9.4"
   },
   "scripts": {
-    "frontend": "cd client && npm start",
+    "frontend": "cd client && npm build && npm run build",
     "backend": "nodemon server/index.js",
-    "predevelop": "npm install && cd client && npm install",
-    "develop": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm run frontend",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -27,11 +27,9 @@
   "homepage": "https://github.com/GuillermoGahbler/FitMeUp#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "moment": "^2.22.2",
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
-    "proptypes": "^1.1.0",
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
