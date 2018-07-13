@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
+  "engines": {
+    "npm": "5.6.0",
+    "node": "8.9.4"
+  },
   "scripts": {
     "frontend": "cd client && npm start",
     "backend": "nodemon server/index.js",

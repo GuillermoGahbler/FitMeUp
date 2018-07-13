@@ -9,7 +9,9 @@ class IntakeChart extends React.Component {
     super(props);
     this.state = {
       weight : 0,
-      bodyFat : 0
+      bodyFat : 0,
+      bodyMass : 0,
+      fatMass : 0
     }
   }
 
@@ -19,11 +21,14 @@ class IntakeChart extends React.Component {
       .then(res => {
         this.setState({
           weight : res.data.weight,
-          bodyFat : res.data.bodyFat
+          bodyFat : res.data.bodyFat,
+          fatMass : parseFloat(res.data.weight * res.data.bodyFat/100).toFixed(2),
+          bodyMass : parseFloat(res.data.weight).toFixed(2) - parseFloat(res.data.weight * res.data.bodyFat/100).toFixed(2) 
         });
         console.log("current stats loaded");
         console.log(res.data.weight);
         console.log(res.data.bodyFat);
+        
       })
       .catch(err => console.log(err))
   }
@@ -83,8 +88,8 @@ class IntakeChart extends React.Component {
         <h3>Current Stats</h3>
         <p>Weight: {this.state.weight}</p>
         <p>Body fat percentage: {this.state.bodyFat}%</p>
-        <p>Lean body mass: 140</p>
-        <p>Fat mass: 40</p>
+        <p>Lean body mass: {this.state.bodyMass}</p>
+        <p>Fat mass: {this.state.fatMass}</p>
       </div>
     );
   }
