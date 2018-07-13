@@ -18,12 +18,12 @@ class Options extends React.Component {
   }
 
   readAccount = (id)=>{
-    axios.get(`http://localhost:3001/accts/${id}`)
+    axios.get(`/accts/${id}`)
     .then(res=>this.changeState('userStats',res.data))
   }
 
   readDays = (id) => {
-    axios.get(`http://localhost:3001/days/${id}`)
+    axios.get(`/days/${id}`)
     .then(res => this.changeState('days',res.data)) 
    }
 
@@ -56,7 +56,7 @@ class Options extends React.Component {
   updateStats = (stats) =>{
     const account_id = this.props.match.params.id;
     const userStats = this.serializeForm(stats)
-    axios.put(`http://localhost:3001/accts/${account_id}`, userStats)
+    axios.put(`/accts/${account_id}`, userStats)
     .then(res=>this.readAccount(res.data[0]))
  
   }
@@ -65,7 +65,7 @@ class Options extends React.Component {
   addIntake = (intake) =>{
      const id = this.props.match.params.id;
      const newIntake = {...intake,account_id:id}
-     axios.post('http://localhost:3001/days',newIntake)
+     axios.post('/days',newIntake)
      .then(res => this.readDays(id))
   }
 

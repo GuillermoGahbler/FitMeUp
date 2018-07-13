@@ -29,17 +29,6 @@ router
   })
 })
 
-
-
-
-
-
-
-
-
-
-
-
 // const apiController = require("../controller/apiController");
 
  
