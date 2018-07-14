@@ -25,6 +25,11 @@ export default {
     console.log("API.calculateLastUpdate");
     console.log(params);
     return axios.get("/calculateLastUpdate",params);
+  },
+  calculateAvgDailyCalories : function(params) {
+    console.log("API.calculateAvgDailyCalories");
+    console.log(params);
+    return axios.get("/calculateAvgDailyCalories",params);
   }
   // Gets the book with the given id
   /*getBook: function(id) {

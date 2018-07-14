@@ -27,4 +27,7 @@ router.route("/getNutritionInfo")
 router.route("/calculateLastUpdate")
 .get(apiController.calculateLastUpdate);
 
+router.route("/calculateAvgDailyCalories")
+.get(apiController.calculateAvgDailyCalories);
+
 module.exports = router;
