@@ -26,17 +26,10 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     Account.associate = function (models) {
-        Account.hasMany(models.Week, {
-            foreignKey: {
-                allowNull: false
-            },
+        Account.hasMany(models.Day, {
+            foreignKey: 'account_id',
             onDelete: "cascade"
-        })
-
-    Account.hasMany(models.Day, {
-      foreignKey: 'account_id',
-      onDelete: "cascade"
-    })
-  };
+            });
+    };
   return Account;
 };
