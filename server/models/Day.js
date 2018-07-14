@@ -24,11 +24,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         weight: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         bodyfat_percentage: {
             type: DataTypes.DECIMAL,
-            allowNull: false
+            allowNull: true
         },
         deviation: {
             type: DataTypes.DECIMAL,
