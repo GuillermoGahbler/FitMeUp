@@ -133,9 +133,9 @@ class Options extends React.Component {
             <Col size="md-3">
               <div>
                 <h3>This week:</h3>
-                <p>Daily calorie target: 2200</p>
+                {/* <p>Daily calorie target: 2200</p> */}
                 <p>Average daily calories:{this.getAvgCalories()}</p>
-                <p>Deviation: 1.45% OPTIMAL</p>
+                {/* <p>Deviation: 1.45% OPTIMAL</p> */}
                 <CalorieBarChart days={this.state.days} />
                 <MacroPieChart currentDay={this.getLastDay}/>
               </div>
