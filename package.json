@@ -8,6 +8,7 @@
     "backend": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
+    "develop": "npm run frontend && npm run backend",
     "heroku-postbuild":"npm run frontend"
   },
   "repository": {

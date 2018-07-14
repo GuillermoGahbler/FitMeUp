@@ -2,21 +2,6 @@ const router = require("express").Router();
 const {accountController, dayController} = require('../controllers')
 
 router
-
-<<<<<<< HEAD
-router.route("/createDay")
-  .get(apiController.createDay)
-  .post(apiController.createDay);
-  
-router.route("/calculateCalories")
-  .get(apiController.calculateCalories)
-  .post(apiController.calculateCalories);
-
-router.route("/getCalorieInfo")
-  .get(apiController.getCalorieInfo);
-
-
-=======
 .get('/accts/:id', (req, res,next)=>{
   accountController.getById(req.params.id, (data)=>{
     res.json(data)
@@ -70,9 +55,21 @@ router.route("/getCalorieInfo")
 
 // router.route("/calculateLastUpdate")
 // .get(apiController.calculateLastUpdate);
->>>>>>> 156042d2f393e625903fec592c4a48fa85d064d1
 
-router.route("/calculateAvgDailyCalories")
+/*router.route("/calculateAvgDailyCalories")
 .get(apiController.calculateAvgDailyCalories);
+
+
+router.route("/createDay")
+  .get(apiController.createDay)
+  .post(apiController.createDay);
+  
+router.route("/calculateCalories")
+  .get(apiController.calculateCalories)
+  .post(apiController.calculateCalories);
+
+router.route("/getCalorieInfo")
+  .get(apiController.getCalorieInfo);*/
+
 
 module.exports = router;
