@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import logo from "../Home/fitmeuplogo2.png"; 
 // axios helping from end speak to back end
 import {Col, Container, Row, MacroPieChart, CalorieBarChart, UserForm, Error, MainGraph, LoseWeight} from './components';
 
@@ -85,7 +86,9 @@ class Options extends React.Component {
     return (
       <div className='optionsPage'>
         <Container>
-
+        <Row>
+        <img className="mainLogo" src={logo} alt="logo" />
+        </Row>
           <Row>
             <button
               className="d-flex justify-content-center"

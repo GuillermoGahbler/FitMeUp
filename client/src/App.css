@@ -7,8 +7,7 @@ body {
 .App {
   text-align: center;
   color:white;
-  font-weight: bolder;
-  margin-top: 150px;
+  font-weight: bolder;  
 }
 
 
@@ -53,6 +52,6 @@ body {
   }
 
   .optionsPage{
-    margin-top: 150px;
+    /* margin-top: 150px; */
     color: white;
   }
