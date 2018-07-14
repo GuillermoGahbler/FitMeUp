@@ -33,12 +33,12 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     Account.associate = function (models) {
-        Account.hasMany(models.Week, {
-            foreignKey: {
-                allowNull: false
-            },
-            onDelete: "cascade"
-        })
+        // Account.hasMany(models.Week, {
+        //     foreignKey: {
+        //         allowNull: false
+        //     },
+        //     onDelete: "cascade"
+        // })
 
         Account.hasMany(models.Day, {
             foreignKey: {

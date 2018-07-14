@@ -20,7 +20,19 @@ module.exports = function (sequelize, DataTypes) {
         fat: {
             type: DataTypes.INTEGER,
             allowNull: true
-        }
+        },
+        weight: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        bodyfat_percentage: {
+            type: DataTypes.DECIMAL,
+            allowNull: false
+        },
+        deviation: {
+            type: DataTypes.DECIMAL,
+            allowNull: true
+        },
     });
 
     Day.associate = function (models) {
