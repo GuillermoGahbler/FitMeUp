@@ -26,7 +26,6 @@
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
-<<<<<<< HEAD
     "proptypes": "^1.1.0",
     "react": "^16.4.1",
     "react-bar-chart": "^0.1.2",
@@ -36,8 +35,6 @@
     "react-scripts": "1.1.4",
     "react-svg-bar-chart": "^1.0.0",
     "react-svg-piechart": "^2.1.1",
-=======
->>>>>>> 156042d2f393e625903fec592c4a48fa85d064d1
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
