@@ -1,6 +1,7 @@
+if (!process.env.PORT) require('dotenv').config();
 const express = require('express');
 var bodyParser = require("body-parser");
-
+const {join} = require('path')
 const server = express();
 const PORT = process.env.PORT || 3001;
 const authRouter = require('./routes/authRoutes');
@@ -22,7 +23,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 server.use(bodyParser.json());
 
-server.use(express.static("public"));
+server.use(express.static(join(__dirname, '../client/build')));
 
 server.use(authorization.initialize());
 server.use(authorization.session());

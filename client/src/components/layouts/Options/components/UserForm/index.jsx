@@ -1,81 +1,59 @@
 import React, { Component } from "react";
 import { Input, Button } from "./components";
 import DatePicker from 'react-datepicker';
-import API from "../../../../../utils/API";
+//import API from "../../../../../utils/API"; No longer using because axios
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 class UserForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      startDate: moment(),
-      Protein : 0,
-      Carbohydrates : 0,
-      Fats: 0,
-      calories : 0
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.submitForm = this.submitForm.bind(this);
+
+  state = {
+    date: moment(),
+    calories:0, 
+    protein:0, 
+    carbs:0, 
+    fat:0
   }
 
-  handleInputChange = event => {
-    console.log("handleInputChange");
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleChange(date) {
-    this.setState({
-      startDate: date
-    });
-  }
-
-  submitForm(event) {
+  submitForm = (event) => {
     event.preventDefault();
-    console.log("submit Form");
-    const formattedDate = moment(this.state.startDate).format("MM-DD-YYYY");
-    if(this.state.calories){
-      console.log("calling API.createDayData");
-      API.createDayData( {
-        date: formattedDate,
-        calories : this.state.calories
-      }).then(res => console.log(res));
-    }
-    else if (this.state.Carbohydrates && this.state.Protein && this.state.Fats) {
-      console.log("calling API.calculateCalories");
-      API.calculateCalories({
-        date: formattedDate,
-        carbs : this.state.Carbohydrates,
-        protein : this.state.Protein,
-        fats : this.state.Fats
-      }).then(res => console.log(res));
-    }
+    const {fat,protein,carbs,calories,...idc} = this.state;
+    const calcCalories = calories || fat * 9 + 4 * (protein + carbs);
+    this.props.enterIntake({...this.state, calories: calcCalories})
 
   }
 
-  handleCalorieChange= (event)=>{
-    console.log("this.handleCalorieChange");
-    this.setState({
-      calories : event.target.value
-    });
+  changeState = (propName, value)=>{
+    this.setState(prevState =>{
+      return{...prevState, [propName]:value}
+    })
   }
+  
+  handleIntegerInputChange = (event) => {
+    const { name, value } = event.currentTarget;
+    this.changeState( name,parseInt(value));
+  }
+
+  
+
+  handleSelect = date =>this.changeState('date', date)
 
   render() {
     return (
       <form>
-        <DatePicker name="Date"
-          selected={this.state.startDate}
-          onChange={this.handleChange}
+        <DatePicker
+          name="date"
+          selected={this.state.date}
+          onSelect={this.handleSelect}
+
         />
         <p>Date</p>
         <p>-----Enter-----</p>
         <div>
           <Input
-            onChange={this.handleCalorieChange}
+
             name="calories"
+            onChange={this.handleIntegerInputChange}
             placeholder="Calories (required)"
           />
           <p>Calories</p>
@@ -84,26 +62,35 @@ class UserForm extends Component {
         <p>-----Or-----</p>
 
         <Input
-          onChange={this.handleInputChange}
-          name="Protein"
+
+          name="protein"
+          onChange={this.handleIntegerInputChange}
           placeholder="Protein (g)"
         />
 
         <Input
-          onChange={this.handleInputChange}
-          name="Carbohydrates"
+          name="carbs"
+          onChange={this.handleIntegerInputChange}
           placeholder="Carbohydrates (g)"
         />
 
         <Input
-          onChange={this.handleInputChange}
-          name="Fats"
+
+          name="fat"
+          onChange={this.handleIntegerInputChange}
           placeholder="Fats (g)"
         />
 
-        <Button type='submit' onClick={this.submitForm} btncolor={'btn-success'}> Submit</Button>
-        
-        <Button type='submit' btncolor={'btn-primary'}>Clear All Data</Button>
+        <Button
+          onClick={this.submitForm}
+          btncolor={'btn-success'}>
+          Submit
+        </Button>
+
+        <Button
+          btncolor={'btn-primary'}>
+          Clear All Data
+         </Button>
 
 
       </form>

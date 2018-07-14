@@ -1,3 +1,4 @@
+
 module.exports = function (sequelize, DataTypes) {
     const Account = sequelize.define("Account", {
          
@@ -15,10 +16,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        weight: {
-            type : DataTypes.INTEGER,
-            allowNull : true
-        },
         height: {
             type: DataTypes.INTEGER,  // height will be converted to inches before being added to the database
             allowNull: true
@@ -26,13 +23,10 @@ module.exports = function (sequelize, DataTypes) {
         gender: {
             type: DataTypes.STRING,
             allowNull: true
-        },
-        bodyFat : {
-            type: DataTypes.FLOAT,
-            allowNull : true
         }
     });
     Account.associate = function (models) {
+<<<<<<< HEAD
         // Account.hasMany(models.Week, {
         //     foreignKey: {
         //         allowNull: false
@@ -40,12 +34,12 @@ module.exports = function (sequelize, DataTypes) {
         //     onDelete: "cascade"
         // })
 
+=======
+>>>>>>> 771661e1228bb16c7e64a6b0026e5b46ddfdbe38
         Account.hasMany(models.Day, {
-            foreignKey: {
-                allowNull: false
-            },
+            foreignKey: 'account_id',
             onDelete: "cascade"
-        })
+            });
     };
-    return Account;
+  return Account;
 };

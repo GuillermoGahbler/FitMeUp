@@ -1,42 +1,11 @@
 import React from "react";
 import { Chart } from "chart.js"
-import axios from 'axios';
 // import "./style.css"
 
 class IntakeChart extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      weight : 0,
-      bodyFat : 0,
-      bodyMass : 0,
-      fatMass : 0
-    }
-  }
-
-  loadCurrentStats = () => {
-    console.log("loading current stats");
-    axios.get(`http://localhost:3001${this.props.url}`)
-      .then(res => {
-        this.setState({
-          weight : res.data.weight,
-          bodyFat : res.data.bodyFat,
-          fatMass : parseFloat(res.data.weight * res.data.bodyFat/100).toFixed(2),
-          bodyMass : parseFloat(res.data.weight).toFixed(2) - parseFloat(res.data.weight * res.data.bodyFat/100).toFixed(2) 
-        });
-        console.log("current stats loaded");
-        console.log(res.data.weight);
-        console.log(res.data.bodyFat);
-        
-      })
-      .catch(err => console.log(err))
-  }
-
   componentDidMount() {
     let ctx = document.getElementById('myChart').getContext('2d');
-
-    this.loadCurrentStats();
 
     new Chart(ctx, {
       type: 'line',
@@ -86,10 +55,10 @@ class IntakeChart extends React.Component {
       <div className="container">
         <canvas id="myChart"></canvas>
         <h3>Current Stats</h3>
-        <p>Weight: {this.state.weight}</p>
-        <p>Body fat percentage: {this.state.bodyFat}%</p>
-        <p>Lean body mass: {this.state.bodyMass}</p>
-        <p>Fat mass: {this.state.fatMass}</p>
+        <p>Weight: 180</p>
+        <p>Body fat percentage: 17%</p>
+        <p>Lean body mass: 140</p>
+        <p>Fat mass: 40</p>
       </div>
     );
   }

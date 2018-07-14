@@ -1,8 +1,8 @@
-.container {
+/* .container {
     display: grid inline-grid;
     /* grid-template-columns: 50px auto auto 50px;
     grid-template-rows: 10px auto 10px; */
-}
+} */
 
 .user-form {
     /* grid-column-start: 1;

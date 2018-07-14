@@ -1,30 +1,75 @@
 const router = require("express").Router();
-const apiController = require("../controller/apiController");
+const {accountController, dayController} = require('../controllers')
 
-// Matches with "/accts"
-router.route("/accts")
-  .get(apiController.getAcct)
-  .post(apiController.create);
-
-// Matches with "/accts/:id"
 router
-  .route("/accts/:id")
-  .get(apiController.findById)
-  .put(apiController.update)
-  .delete(apiController.remove);
+.get('/accts/:id', (req, res,next)=>{
+  accountController.getById(req.params.id, (data)=>{
+    res.json(data)
+  })
+})
+
+.put('/accts/:id', (req,res,next)=>{
+  accountController
+    .updateAccount(req.params.id,req.body,(updatedAccount)=>{
+      res.json(updatedAccount);
+    })
+})
+
+
+.get('/days/:userId', (req, res, next)=>{
+ dayController.getByuserId(req.params.userId, (data)=>{
+   res.json(data)
+ })
+})
+
+.post('/days',(req,res,next)=>{
+  dayController.create(req.body,(day)=>{
+    res.json(day)
+  })
+})
+
+// const apiController = require("../controller/apiController");
+
+ 
+// router.route("/accts")
+//   .get(apiController.getAcct)
+//   .post(apiController.create);
+
+ 
+// router
+//   .route("/accts/:id")
+//   .get(apiController.findById)
+//   .put(apiController.update)
+//   .delete(apiController.remove);
+
+// router.route("/createDay")
+//   .get(apiController.createDay)
+//   .post(apiController.createDay);
+  
+// router.route("/calculateCalories")
+//   .get(apiController.calculateCalories)
+//   .post(apiController.calculateCalories);
+
+// router.route("/getNutritionInfo")
+// .get(apiController.getNutritionInfo);
+
+// router.route("/calculateLastUpdate")
+// .get(apiController.calculateLastUpdate);
+
+/*router.route("/calculateAvgDailyCalories")
+.get(apiController.calculateAvgDailyCalories);
+
 
 router.route("/createDay")
   .get(apiController.createDay)
   .post(apiController.createDay);
-
+  
 router.route("/calculateCalories")
   .get(apiController.calculateCalories)
   .post(apiController.calculateCalories);
 
-router.route("/getNutritionInfo")
-.get(apiController.getNutritionInfo);
+router.route("/getCalorieInfo")
+  .get(apiController.getCalorieInfo);*/
 
-router.route("/calculateLastUpdate")
-.get(apiController.calculateLastUpdate);
 
 module.exports = router;
