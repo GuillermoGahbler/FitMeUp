@@ -1,39 +1,35 @@
 import React, { Component } from "react";
-import Dropdown from 'react-dropdown';
-import { RadioGroup, RadioButton } from 'react-radio-buttons';
-import 'react-dropdown/style.css'
 import { Input, Button } from "./components";
+import DatePicker from 'react-datepicker';
 import API from "../../../../../utils/API";
 import moment from 'moment';
-
-const feetOptions =[4,5,6,7,8];
-const inchesOptions = [0,1,2,3,4,5,6,7,8,9,10,11];
+import 'react-datepicker/dist/react-datepicker.css';
 
 class UpdateProfile extends Component {
   constructor(props) {
     super(props)
     this.state = {
       gender : "",
-      feet : 0,
-      inches : 0,
-      bodyFat : 0,
-      neck : 0,
-      waist : 0,
-      hips : 0
+      height : 0,
+      bodyFat : 0
     };
-
+    this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
 
   handleInputChange = event => {
-    //event.preventDefault();
     console.log("handleInputChange");
-    console.log(event.target);
-    /*const { name, value } = event.target;
+    const { name, value } = event.target;
     this.setState({
       [name]: value
-    });*/
+    });
   };
+
+  handleChange(date) {
+    this.setState({
+      startDate: date
+    });
+  }
 
   submitForm(event) {
     event.preventDefault();
@@ -58,61 +54,45 @@ class UpdateProfile extends Component {
 
   }
 
+  handleCalorieChange= (event)=>{
+    console.log("this.handleCalorieChange");
+    this.setState({
+      calories : event.target.value
+    });
+    //API.getAccounts().then( res => console.log(res));
+  }
+
   render() {
     return (
       <form>
-        <p> Height </p>
-        Feet: <Dropdown
-          options={feetOptions}
-          onChange={this.handleInputChange}
-          name="Feet" 
-          placeholder="Select your height in Ft"
-        />
+        
+        <div>
+          <Input
+            onChange={this.handleCalorieChange}
+            name="calories"
+            placeholder="Calories (required)"
+          />
+          <p>Calories</p>
+        </div>
 
-        Inches: <Dropdown
-          options={inchesOptions}
-          onChange={this.handleInputChange}
-          name="Inches" 
-          placeholder="Select your height in Inches"
-        />
+        <p>-----Or-----</p>
 
-        Gender: <RadioGroup onChange={this.handleInputChange} horizontal>
-          <RadioButton value="male">
-            Male
-          </RadioButton>
-          <RadioButton value="female">
-            Female
-          </RadioButton>
-        </RadioGroup>        
-
-        Body Fat: 
         <Input
           onChange={this.handleInputChange}
-          name="bodyFat"
-          placeholder="Body Fat %"
+          name="Protein"
+          placeholder="Protein (g)"
         />
 
-        <p> ----- OR ------ </p>
-
-        Neck (inches):
         <Input
           onChange={this.handleInputChange}
-          name="neck"
-          placeholder="Neck (inches) "
+          name="Carbohydrates"
+          placeholder="Carbohydrates (g)"
         />
 
-        Waist (inches):
         <Input
           onChange={this.handleInputChange}
-          name="waist"
-          placeholder="Waist (inches)"
-        />
-
-        Hips (Inches - women only)
-        <Input
-          onChange={this.handleInputChange}
-          name="hips"
-          placeholder="Hips (inches)"
+          name="Fats"
+          placeholder="Fats (g)"
         />
 
         <Button type='submit' onClick={this.submitForm} btncolor={'btn-success'}> Submit</Button>

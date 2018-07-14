@@ -10,7 +10,7 @@ router.get('/google', passport.authenticate('google', {
     passport.authenticate('google', { failureRedirect: "/" }),
     (req, res, next) => {
       const userId =req.user.dataValues.id
-      res.redirect(`http://localhost:3000/accts/${userId}`)
+      res.redirect(`/#/accts/${userId}`)
 
     })
 
