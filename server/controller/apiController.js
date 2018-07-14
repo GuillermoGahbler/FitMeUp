@@ -121,7 +121,20 @@ module.exports = {
         console.log(req.body);
         db.Account.findOne({where : {id : 1} } ,
            { attributes : ['DateDiff(NOW,createdAt)'] }
-        ).then(datediff => res.json(datediff))
+        ).then(datediff => { console.log("dateDiff calculated"); res.json(datediff)})
         .catch(err => res.status(422).json(err));
     },
+
+    calculateAvgDailyCalories : function(req,res) {
+        console.log("calculateAvgDailyCalorie");
+        db.Day.findOne({where: {AccountId : 1} },
+            { attributes : ['AVG(calories)','date'] }
+        ).then(avgCal => { console.log("avgCal calculated");  res.json(avgCal);
+        }).catch(err => res.status(422).json(err));
+    }
 }
+
+
+/*,
+            {order : ['date','DESC'] },
+            {limit : 7} */
