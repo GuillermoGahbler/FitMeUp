@@ -1,16 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-
-import {
-  Col, Container, Row, WeeklyCharts, UserForm,Error,MainGraph, LoseWeight
-} from './components';
-
-class Options extends React.Component {
-  state = {
-    loseWeight: false,
-    maintainWeight: false,
-    gainWeight:false
-=======
 import axios from 'axios';
 // axios helping from end speak to back end
 import {Col, Container, Row, MacroPieChart, CalorieBarChart, UserForm, Error, MainGraph, LoseWeight} from './components';
@@ -19,7 +7,6 @@ class Options extends React.Component {
   state = {
     statsIsClicked: false,
     days:[]
->>>>>>> 156042d2f393e625903fec592c4a48fa85d064d1
   }
 
   //makes two different requests for user information as soon as the compornent mounts
@@ -105,41 +92,6 @@ class Options extends React.Component {
               onClick={this.closeStats}
             >Enter current stats
           </button>
-<<<<<<< HEAD
-          
-          
-          <button className="d-flex justify-content-center">Maintain Weight</button>
-          <button className="d-flex justify-content-center">Gain Weight</button>
-        </Row>
-
-        <Row className="justify-content-center">
-          <Error message = {"This is an error"}/>
-        </Row>
-
-        <Row>
-
-          <Col size="md-3" height="300px">
-            <UserForm/>
-          </Col>
-
-          <Col size="md-6">
-            
-            <MainGraph/>
-          </Col>
-
-          <Col size="md-3">
-            <WeeklyCharts />
-          </Col>
-
-        </Row>
-
-      </Container>
-  {this.state.loseWeight && <LoseWeight
-  closeModal = {this.closeModal}
-  url={this.props.location.pathname}
-/>}
-    </div>);
-=======
 
           </Row>
 
@@ -177,7 +129,6 @@ class Options extends React.Component {
           updateUserStats={this.updateStats}
                    />}
       </div>);
->>>>>>> 156042d2f393e625903fec592c4a48fa85d064d1
   }
 }
 
