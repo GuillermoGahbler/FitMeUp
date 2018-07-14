@@ -1,3 +1,4 @@
+
 module.exports = function (sequelize, DataTypes) {
     const Account = sequelize.define("Account", {
          
@@ -32,12 +33,10 @@ module.exports = function (sequelize, DataTypes) {
             onDelete: "cascade"
         })
 
-        Account.hasMany(models.Day, {
-            foreignKey: {
-                allowNull: false
-            },
-            onDelete: "cascade"
-        })
-    };
-    return Account;
+    Account.hasMany(models.Day, {
+      foreignKey: 'account_id',
+      onDelete: "cascade"
+    })
+  };
+  return Account;
 };
