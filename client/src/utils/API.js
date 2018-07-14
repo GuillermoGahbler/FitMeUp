@@ -18,13 +18,9 @@ export default {
     console.log(params);
     return axios.post("/calculateCalories",params);
   },
-  getNutritionInfo : function(){
-    return axios.get("/getNutritionInfo")
-  },
-  calculateLastUpdate : function(params) {
-    console.log("API.calculateLastUpdate");
-    console.log(params);
-    return axios.get("/calculateLastUpdate",params);
+  getCalorieInfo : function () {
+    console.log("API.getCalorieInfo");
+    return axios.get("/getCalorieInfo");
   }
   // Gets the book with the given id
   /*getBook: function(id) {

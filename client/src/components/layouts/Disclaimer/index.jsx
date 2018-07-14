@@ -24,7 +24,7 @@ const Disclaimer = () =>{
     <img className="img-giphy" src="https://media.giphy.com/media/3o85xunRezGKPOkcG4/giphy.gif" alt="logo"/>
     <div className="theButtons">
     
-            <button className="RegisterBtn">Fit Me Up now!</button>
+            <button className="RegisterBtn btn-success">Fit Me Up now!</button>
     </div>
     </footer>  
 
