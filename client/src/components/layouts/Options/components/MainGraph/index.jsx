@@ -5,16 +5,9 @@ import axios from 'axios';
 
 class IntakeChart extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      weight : 0,
-      bodyFat : 0,
-      bodyMass : 0,
-      fatMass : 0
-    }
-  }
 
+
+/*
   loadCurrentStats = () => {
     console.log("loading current stats");
     axios.get(`http://localhost:3001${this.props.url}`)
@@ -33,10 +26,11 @@ class IntakeChart extends React.Component {
       .catch(err => console.log(err))
   }
 
+  */
   componentDidMount() {
     let ctx = document.getElementById('myChart').getContext('2d');
+        // this.loadCurrentStats();
 
-    this.loadCurrentStats();
 
     new Chart(ctx, {
       type: 'line',
@@ -45,27 +39,15 @@ class IntakeChart extends React.Component {
         datasets: [{
           label: 'Weight',
           data: [170, 171, 173, 172, 172],
-          backgroundColor: [
-            'rgba(100, 100, 100, 0.2)',
-
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-
-          ],
+          backgroundColor: ['rgba(100, 100, 100, 0.2)'],
+          borderColor: ['rgba(255,99,132,1)'],
           borderWidth: 1
         },
         {
           label: 'Body Fat',
           data: [30, 29, 28, 24, 25],
-          backgroundColor: [
-            'rgba(100, 100, 100, 0.2)',
-
-          ],
-          borderColor: [
-            'rgba(155, 1, 32, 1)',
-
-          ],
+          backgroundColor: ['rgba(100, 100, 100, 0.2)'],
+          borderColor: ['rgba(155, 1, 32, 1)'],
           borderWidth: 1
         }],
       },
@@ -86,10 +68,10 @@ class IntakeChart extends React.Component {
       <div className="container">
         <canvas id="myChart"></canvas>
         <h3>Current Stats</h3>
-        <p>Weight: {this.state.weight}</p>
-        <p>Body fat percentage: {this.state.bodyFat}%</p>
-        <p>Lean body mass: {this.state.bodyMass}</p>
-        <p>Fat mass: {this.state.fatMass}</p>
+        <p>Weight: {this.props.stats.weight}</p>
+        <p>Body fat percentage: {this.props.stats.bodyFat}%</p>
+        <p>Lean body mass: {this.props.stats.bodyMass}</p>
+        <p>Fat mass: {this.props.stats.fatMass}</p>
       </div>
     );
   }

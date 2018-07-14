@@ -6,7 +6,8 @@ import {Col, Container, Row, MacroPieChart, CalorieBarChart, UserForm, Error, Ma
 class Options extends React.Component {
   state = {
     statsIsClicked: false,
-    days:[]
+    days:[],
+    userStats:{}
   }
 
   //makes two different requests for user information as soon as the compornent mounts
@@ -14,7 +15,7 @@ class Options extends React.Component {
     const userId = this.props.match.params.id;
     this.readAccount(userId);
     this.readDays(userId);
-    
+    // this.lastUpdate();    
   }
 
   readAccount = (id)=>{
@@ -35,26 +36,23 @@ class Options extends React.Component {
     })
   }
 
-lastUpdate = () => {
-  console.log("last update");
-  axios.get(`http://localhost:3001${this.props.location.pathname}`)
-      .then(res => {
-        console.log("updatedAt");
-        console.log(res.data.updatedAt);
+// lastUpdate = () => {
+//   console.log("last update");
+//   axios.get(`http://localhost:3001${this.props.location.pathname}`)
+//       .then(res => {
+//         console.log("updatedAt");
+//         console.log(res.data.updatedAt);
         
-        let dateDiff = Math.floor((Date.now() - Date.parse(res.data.updatedAt))/(1000*60*60*24));
-        console.log("dateDiff : " + dateDiff);
-        this.setState({
-          lastUpdate : dateDiff
-        });
-      })
-      .catch(err => console.log(err))
-}
+//         let dateDiff = Math.floor((Date.now() - Date.parse(res.data.updatedAt))/(1000*60*60*24));
+//         console.log("dateDiff : " + dateDiff);
+//         this.setState({
+//           lastUpdate : dateDiff
+//         });
+//       })
+//       .catch(err => console.log(err))
+// }
 
-componentDidMount() {
-  this.lastUpdate();
-}
-
+ 
 
   //resets boolean to prev state
   reverseBooleanValue = (propName) => {
@@ -127,15 +125,17 @@ componentDidMount() {
 
             <Col size="md-6">
 
-              <MainGraph data={this.state.days} />
+              <MainGraph data={this.state.days} stats = {this.state.userStats}
+              
+              />
             </Col>
 
             <Col size="md-3">
               <div>
                 <h3>This week:</h3>
-                {/* <p>Daily calorie target: 2200</p> */}
+                <p>Daily calorie target: 2200</p>
                 <p>Average daily calories:{this.getAvgCalories()}</p>
-                {/* <p>Deviation: 1.45% OPTIMAL</p> */}
+                <p>Deviation: 1.45% OPTIMAL</p>
                 <CalorieBarChart days={this.state.days} />
                 <MacroPieChart currentDay={this.getLastDay}/>
               </div>

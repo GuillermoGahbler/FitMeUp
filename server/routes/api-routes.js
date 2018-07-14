@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const {accountController, dayController} = require('../controllers')
+const {account}=require('../calculations')
+
 
 router
 
@@ -9,7 +11,7 @@ router
   })
 })
 
-.put('/accts/:id', (req,res,next)=>{
+.put('/accts/:id', account.calculatedStats,(req,res,next)=>{
   accountController
     .updateAccount(req.params.id,req.body,(updatedAccount)=>{
       res.json(updatedAccount);

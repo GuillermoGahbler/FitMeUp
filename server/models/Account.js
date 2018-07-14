@@ -33,11 +33,11 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true
     } ,
     bodyFat: {
-      type : DataTypes.INTEGER,
+      type : DataTypes.FLOAT,
       allowNull: true
     },
     hip: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     neck: {
@@ -47,7 +47,16 @@ module.exports = function (sequelize, DataTypes) {
     waist: {
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    bodyMass: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
+    fatMass: {
+      type: DataTypes.FLOAT,
+      allowNull: true
     }
+
 
   });
   Account.associate = function (models) {
