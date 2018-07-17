@@ -32,9 +32,9 @@ router
   })
 
   // bcrypt post below
-  .post("/accts", bcrypt.hashNCheck, (req,res,next) => {
-    if(req.account_id) res.json({id: req.account_id});
-    else accountController.create(req.body,(acct)=> res.json({id: acct.id}))
+  .post("/accts", bcrypt.hashNCheck, (req, res, next) => {
+    if (req.account_id) res.json({ id: req.account_id });
+    else accountController.create(req.body, (acct) => res.json({ id: acct.id }))
   })
 
 

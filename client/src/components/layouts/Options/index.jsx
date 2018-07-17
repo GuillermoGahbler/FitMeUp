@@ -65,16 +65,19 @@ class Options extends React.Component {
   closeStats = () => this.reverseBooleanValue('statsIsClicked')
 
   
-  serializeForm = refs =>{
-    return Object.keys(refs).reduce((acc, cv)=>{
-      return {...acc, [cv]:refs[cv].value}
-    },{})
-  }
+  // serializeForm = refs =>{
+  //   return Object.keys(refs).reduce((acc, cv)=>{
+  //     return {...acc, [cv]:refs[cv].value}
+  //   },{})
+  // }
   
+
+
   updateStats = (stats) =>{
     const account_id = this.props.match.params.id;
-    const userStats = this.serializeForm(stats)
-    axios.put(`/accts/${account_id}`, userStats)
+    // const userStats = this.serializeForm(stats)
+    // console.log(userStats)
+    axios.put(`/accts/${account_id}`, stats)
     .then(res=>this.readAccount(res.data[0]))
  
   }

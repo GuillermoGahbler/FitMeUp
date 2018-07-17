@@ -36,14 +36,7 @@ module.exports = function (sequelize, DataTypes) {
       type : DataTypes.INTEGER,
       allowNull: true
     } ,
-    bodyFat: {
-      type : DataTypes.FLOAT,
-      allowNull: true
-    },
-    hip: {
-      type: DataTypes.FLOAT,
-      allowNull: true
-    },
+    
     neck: {
       type: DataTypes.INTEGER,
       allowNull: true
@@ -57,6 +50,14 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true
     },
     fatMass: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
+    bodyFat: {
+      type : DataTypes.FLOAT,
+      allowNull: true
+    },
+    hip: {
       type: DataTypes.FLOAT,
       allowNull: true
     }
