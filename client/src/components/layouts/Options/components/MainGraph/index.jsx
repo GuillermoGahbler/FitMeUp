@@ -1,11 +1,36 @@
 import React from "react";
 import { Chart } from "chart.js"
+import axios from 'axios';
 // import "./style.css"
 
 class IntakeChart extends React.Component {
 
+
+
+/*
+  loadCurrentStats = () => {
+    console.log("loading current stats");
+    axios.get(`http://localhost:3001${this.props.url}`)
+      .then(res => {
+        this.setState({
+          weight : res.data.weight,
+          bodyFat : res.data.bodyFat,
+          fatMass : parseFloat(res.data.weight * res.data.bodyFat/100).toFixed(2),
+          bodyMass : parseFloat(res.data.weight).toFixed(2) - parseFloat(res.data.weight * res.data.bodyFat/100).toFixed(2) 
+        });
+        console.log("current stats loaded");
+        console.log(res.data.weight);
+        console.log(res.data.bodyFat);
+        
+      })
+      .catch(err => console.log(err))
+  }
+
+  */
   componentDidMount() {
     let ctx = document.getElementById('myChart').getContext('2d');
+        // this.loadCurrentStats();
+
 
     new Chart(ctx, {
       type: 'line',
@@ -14,27 +39,15 @@ class IntakeChart extends React.Component {
         datasets: [{
           label: 'Weight',
           data: [170, 171, 173, 172, 172],
-          backgroundColor: [
-            'rgba(100, 100, 100, 0.2)',
-
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-
-          ],
+          backgroundColor: ['rgba(100, 100, 100, 0.2)'],
+          borderColor: ['rgba(255,99,132,1)'],
           borderWidth: 1
         },
         {
           label: 'Body Fat',
           data: [30, 29, 28, 24, 25],
-          backgroundColor: [
-            'rgba(100, 100, 100, 0.2)',
-
-          ],
-          borderColor: [
-            'rgba(155, 1, 32, 1)',
-
-          ],
+          backgroundColor: ['rgba(100, 100, 100, 0.2)'],
+          borderColor: ['rgba(155, 1, 32, 1)'],
           borderWidth: 1
         }],
       },
@@ -55,10 +68,10 @@ class IntakeChart extends React.Component {
       <div className="container">
         <canvas id="myChart"></canvas>
         <h3>Current Stats</h3>
-        <p>Weight: 180</p>
-        <p>Body fat percentage: 17%</p>
-        <p>Lean body mass: 140</p>
-        <p>Fat mass: 40</p>
+        <p>Weight: {this.props.stats.weight}</p>
+        <p>Body fat percentage: {this.props.stats.bodyFat}%</p>
+        <p>Lean body mass: {this.props.stats.bodyMass}</p>
+        <p>Fat mass: {this.props.stats.fatMass}</p>
       </div>
     );
   }

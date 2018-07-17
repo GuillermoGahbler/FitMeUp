@@ -2,7 +2,7 @@ import React from 'react';
 import './loseWeight.css';
 
 
- 
+
 class LoseWeight extends React.Component {
   formSubmit = event => {
     event.preventDefault();
