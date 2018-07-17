@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
 
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: false
     },
     email: {
@@ -14,7 +14,11 @@ module.exports = function (sequelize, DataTypes) {
     },
     google_id: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
       gender: {
       type: DataTypes.STRING,

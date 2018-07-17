@@ -1,62 +1,44 @@
 const router = require("express").Router();
-const {accountController, dayController} = require('../controllers')
-const {account}=require('../calculations')
-
+const { accountController, dayController } = require('../controllers')
+const { account } = require('../calculations')
+const { bcrypt } = require('../authorization')
 
 router
 
-.get('/accts/:id', (req, res,next)=>{
-  accountController.getById(req.params.id, (data)=>{
-    res.json(data)
-  })
-})
-
-.put('/accts/:id', account.calculatedStats,(req,res,next)=>{
-  accountController
-    .updateAccount(req.params.id,req.body,(updatedAccount)=>{
-      res.json(updatedAccount);
+  .get('/accts/:id', (req, res, next) => {
+    accountController.getById(req.params.id, (data) => {
+      res.json(data)
     })
-})
-
-
-.get('/days/:userId', (req, res, next)=>{
- dayController.getByuserId(req.params.userId, (data)=>{
-   res.json(data)
- })
-})
-
-.post('/days',(req,res,next)=>{
-  dayController.create(req.body,(day)=>{
-    res.json(day)
   })
-})
 
-// const apiController = require("../controller/apiController");
+  .put('/accts/:id', account.calculatedStats, (req, res, next) => {
+    accountController
+      .updateAccount(req.params.id, req.body, (updatedAccount) => {
+        res.json(updatedAccount);
+      })
+  })
 
- 
-// router.route("/accts")
-//   .get(apiController.getAcct)
-//   .post(apiController.create);
 
- 
-// router
-//   .route("/accts/:id")
-//   .get(apiController.findById)
-//   .put(apiController.update)
-//   .delete(apiController.remove);
+  .get('/days/:userId', (req, res, next) => {
+    dayController.getByuserId(req.params.userId, (data) => {
+      res.json(data)
+    })
+  })
 
-// router.route("/createDay")
-//   .get(apiController.createDay)
-//   .post(apiController.createDay);
-  
-// router.route("/calculateCalories")
-//   .get(apiController.calculateCalories)
-//   .post(apiController.calculateCalories);
+  .post('/days', (req, res, next) => {
+    dayController.create(req.body, (day) => {
+      res.json(day)
+    })
+  })
 
-// router.route("/getNutritionInfo")
-// .get(apiController.getNutritionInfo);
+  // bcrypt post below
+  .post("/accts", bcrypt.hashNCheck, (req,res,next) => {
+    if(req.account_id) res.json({id: req.account_id});
+    else accountController.create(req.body,(acct)=> res.json({id: acct.id}))
+  })
 
-// router.route("/calculateLastUpdate")
-// .get(apiController.calculateLastUpdate);
 
-module.exports = router;
+
+
+
+module.exports = router

@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const passport = require('../authorization');
+const {authorization} = require('../authorization');
 
 
-router.get('/google', passport.authenticate('google', {
+router.get('/google', authorization.authenticate('google', {
   scope: ['profile', 'email']
 }))
 
   .get("/google/callback",
-    passport.authenticate('google', { failureRedirect: "/" }),
+    authorization.authenticate('google', { failureRedirect: "/" }),
     (req, res, next) => {
       const userId =req.user.dataValues.id
       res.redirect(`/#/accts/${userId}`)

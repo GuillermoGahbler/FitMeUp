@@ -12,6 +12,8 @@ const getById = (id,cb) =>{
 
 }
 
+
+
  
 
 const updateAccount = (accountId,data,cb) =>{
@@ -20,12 +22,13 @@ const updateAccount = (accountId,data,cb) =>{
 }
 
 
+const create = (acct,cb) => Account.create(acct).then(acct=>cb(acct)) 
 
 
 
 
 module.exports = {
   getById:getById, 
-  updateAccount: updateAccount
-
+  updateAccount: updateAccount,
+  create : create
 }

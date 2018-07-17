@@ -6,7 +6,7 @@ const server = express();
 const PORT = process.env.PORT || 3001;
 const authRouter = require('./routes/authRoutes');
 const apiRoutes = require('./routes/api-routes');
-const authorization = require ('./authorization');
+const {authorization} = require ('./authorization');
 const db = require('./models');
 
 server.use(function(req,res,next){
