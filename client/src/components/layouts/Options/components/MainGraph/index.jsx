@@ -1,34 +1,64 @@
 import React from "react";
+import axios from 'axios';
 import { Chart } from "chart.js"
 // import "./style.css"
 
 class IntakeChart extends React.Component {
-  state = {
-    weight: this.weightArray,
-    bodyfat: this.bfArray,
-    leanbodymass: this.lbmArray,
-    fatmass: this.fmArray,
-    labels: this.labelsArray
+
+  constructor(props){
+    super(props);
+    console.log("main graph props");
+    console.log(props);    
   }
 
-  weightArray = this.props.weeks.reduce((acc, week) => [...acc, week.weight], []);
-  bfArray = this.props.weeks.reduce((acc, week) => [...acc, week.bodyFat], []);
-  lbmArray = this.props.weeks.reduce((acc, week) => [...acc, week.bodyMass], []);
-  fmArray = this.props.weeks.reduce((acc, week) => [...acc, week.fatMass], []);
-  labelsArray = Array(this.weightArray.length).map((ele, index) => `week${index + 1}`);
+  state = {
+    weeks: [],
+    weight: [],
+    bodyfat: [],
+    leanbodymass: [],
+    fatmass: [],
+    labels: []
+  }
 
 
+
+  readWeeks = (id)=>{
+    axios.get(`/weeks/${id}`)
+    .then(res=>{
+      this.setState({
+        weeks : res.data,
+        weight: res.data.reduce((acc, week) => [...acc, week.weight], []),
+        bodyfat : res.data.reduce((acc, week) => [...acc, week.bodyFat], []),
+        leanbodymass : res.data.reduce((acc, week) => [...acc, week.bodyMass], []),
+        fatmass : res.data.reduce((acc, week) => [...acc, week.fatMass], []),
+        labels : Array(res.data.reduce((acc, week) => [...acc, week.weight], []).length).map((ele,index) => `week${index + 1}`)
+      });
+
+      console.log("MainGraph state");
+      console.log(this.state);
+
+     /* weightArray = this.state.weeks.reduce((acc, week) => [...acc, week.weight], []);
+    bfArray = this.state.weeks.reduce((acc, week) => [...acc, week.bodyFat], []);
+    lbmArray = this.state.weeks.reduce((acc, week) => [...acc, week.bodyMass], []);
+    fmArray = this.state.weeks.reduce((acc, week) => [...acc, week.fatMass], []);
+    labelsArray = Array(this.weightArray.length).map((ele, index) => `week${index + 1}`);*/
+    })
+  }
 
   componentDidMount() {
     let ctx = document.getElementById('myChart').getContext('2d');
-    console.log(this.state)
+    console.log("User ID");
+    console.log(this.props.account_id);
+
+    this.readWeeks(this.props.account_id);
+
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: this.labelsArray,
+        labels: this.state.labels,
         datasets: [{
           label: 'Weight',
-          data: this.weightArray,
+          data: this.state.weight,
           backgroundColor: [
             'rgba(100, 100, 100, 0.2)',
 
@@ -41,7 +71,7 @@ class IntakeChart extends React.Component {
         },
         {
           label: 'Body Fat',
-          data: this.fmArray,
+          data: this.state.fatmass,
           backgroundColor: [
             'rgba(100, 100, 100, 0.2)',
 
@@ -70,10 +100,10 @@ class IntakeChart extends React.Component {
       <div className="container">
         <canvas id="myChart"></canvas>
         <h3>Current Stats</h3>
-        <p>Weight: {this.weightArray[this.weightArray.length - 1]}</p>
-        <p>Body fat percentage: {this.bfArray[this.bfArray.length - 1]}</p>
-        <p>Lean body mass: {this.lbmArray[this.lbmArray.length - 1]}</p>
-        <p>Fat mass: {this.fmArray[this.fmArray.length - 1]}</p>
+        <p>Weight: {this.state.weight[this.state.weight.length - 1]}</p>
+        <p>Body fat percentage: {this.state.bodyfat[this.state.bodyfat.length - 1]}</p>
+        <p>Lean body mass: {this.state.leanbodymass[this.state.leanbodymass.length - 1]}</p>
+        <p>Fat mass: {this.state.fatmass[this.state.fatmass.length - 1]}</p>
       </div>
     );
   }
