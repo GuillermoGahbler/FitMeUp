@@ -7,6 +7,7 @@ class Options extends React.Component {
   state = {
     statsIsClicked: false,
     days:[],
+    weeks:[],
     userStats:{}
   }
 
@@ -15,7 +16,13 @@ class Options extends React.Component {
     const userId = this.props.match.params.id;
     this.readAccount(userId);
     this.readDays(userId);
+    this.readWeeks(userId);
     // this.lastUpdate();    
+  }
+
+  readWeeks = (id)=>{
+    axios.get(`/weeks/${id}`)
+    .then(res=>this.changeState('weeks',res.data))
   }
 
   readAccount = (id)=>{
@@ -77,7 +84,8 @@ class Options extends React.Component {
     const account_id = this.props.match.params.id;
     // const userStats = this.serializeForm(stats)
     // console.log(userStats)
-    axios.put(`/accts/${account_id}`, stats)
+    const userStats = {...stats,account_id:account_id}
+    axios.post(`/weeks`, userStats)
     .then(res=>this.readAccount(res.data[0]))
  
   }
@@ -128,7 +136,7 @@ class Options extends React.Component {
 
             <Col size="md-6">
 
-              <MainGraph data={this.state.days} stats = {this.state.userStats}
+              <MainGraph weeks={this.state.weeks}
               
               />
             </Col>

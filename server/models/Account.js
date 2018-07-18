@@ -19,56 +19,55 @@ module.exports = function (sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-      gender: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    feet: { 
-      type : DataTypes.INTEGER,
-      allowNull: true
-    },
-    inches: {
-      type : DataTypes.INTEGER,
-      allowNull: true
-    },
-    weight: {
-      type : DataTypes.INTEGER,
-      allowNull: true
-    } ,
-    
-    neck: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    waist: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    bodyMass: {
-      type: DataTypes.FLOAT,
-      allowNull: true
-    },
-    fatMass: {
-      type: DataTypes.FLOAT,
-      allowNull: true
-    },
-    bodyFat: {
-      type : DataTypes.FLOAT,
-      allowNull: true
-    },
-    hip: {
-      type: DataTypes.FLOAT,
-      allowNull: true
     }
+    //   gender: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true
+    // },
+    // feet: { 
+    //   type : DataTypes.INTEGER,
+    //   allowNull: true
+    // },
+    // inches: {
+    //   type : DataTypes.INTEGER,
+    //   allowNull: true
+    // },
+    // weight: {
+    //   type : DataTypes.INTEGER,
+    //   allowNull: true
+    // } ,
+    
+    // neck: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true
+    // },
+    // waist: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true
+    // },
+    // bodyMass: {
+    //   type: DataTypes.FLOAT,
+    //   allowNull: true
+    // },
+    // fatMass: {
+    //   type: DataTypes.FLOAT,
+    //   allowNull: true
+    // },
+    // bodyFat: {
+    //   type : DataTypes.FLOAT,
+    //   allowNull: true
+    // },
+    // hip: {
+    //   type: DataTypes.FLOAT,
+    //   allowNull: true
+    // }
 
 
   });
   Account.associate = function (models) {
     Account.hasMany(models.Week, {
-      foreignKey: {
-        allowNull: false
-      },
+      foreignKey: 'account_id'
+      ,
       onDelete: "cascade"
     })
 

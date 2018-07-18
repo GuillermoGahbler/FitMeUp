@@ -1,5 +1,5 @@
 module.exports = {
-  account: require('./accountCalculations')
+  week: require('./weekCalculations')
 }
 
 
