@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
+  "engines": {
+    "npm": "5.6.0",
+    "node": "8.9.4"
+  },
   "scripts": {
-    "frontend": "cd client && npm install && npm run build",
+    "frontend": "cd client && npm run build",
     "backend": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
     "develop": "npm run frontend && npm run backend",
-    "heroku-postbuild":"npm run frontend"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -23,19 +27,11 @@
   },
   "homepage": "https://github.com/GuillermoGahbler/FitMeUp#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "express": "^4.16.3",
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
-    "proptypes": "^1.1.0",
-    "react": "^16.4.1",
-    "react-bar-chart": "^0.1.2",
-    "react-datepicker": "^1.5.0",
-    "react-dom": "^16.4.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
-    "react-svg-bar-chart": "^1.0.0",
-    "react-svg-piechart": "^2.1.1",
     "sequelize": "^4.38.0"
   },
   "devDependencies": {

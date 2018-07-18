@@ -45,12 +45,11 @@ class Home extends React.Component {
             <RegisterButton
               handleClick={this.handleRegClick}
             />}
-          {
-            this.state.isClicked && <Login />
+           {
+            this.state.isClicked && <Login context={this.props.history}/>
 
           }
         </div>
-
 
       </div>
     )
