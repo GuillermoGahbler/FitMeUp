@@ -3,17 +3,32 @@ import { Chart } from "chart.js"
 // import "./style.css"
 
 class IntakeChart extends React.Component {
+  state = {
+    weight: this.weightArray,
+    bodyfat: this.bfArray,
+    leanbodymass: this.lbmArray,
+    fatmass: this.fmArray,
+    labels: this.labelsArray
+  }
+
+  weightArray = this.props.weeks.reduce((acc, week) => [...acc, week.weight], []);
+  bfArray = this.props.weeks.reduce((acc, week) => [...acc, week.bodyFat], []);
+  lbmArray = this.props.weeks.reduce((acc, week) => [...acc, week.bodyMass], []);
+  fmArray = this.props.weeks.reduce((acc, week) => [...acc, week.fatMass], []);
+  labelsArray = Array(this.weightArray.length).map((ele, index) => `week${index + 1}`);
+
+
 
   componentDidMount() {
     let ctx = document.getElementById('myChart').getContext('2d');
-
+    console.log(this.state)
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
+        labels: this.labelsArray,
         datasets: [{
           label: 'Weight',
-          data: [170, 171, 173, 172, 172],
+          data: this.weightArray,
           backgroundColor: [
             'rgba(100, 100, 100, 0.2)',
 
@@ -26,7 +41,7 @@ class IntakeChart extends React.Component {
         },
         {
           label: 'Body Fat',
-          data: [30, 29, 28, 24, 25],
+          data: this.fmArray,
           backgroundColor: [
             'rgba(100, 100, 100, 0.2)',
 
@@ -55,10 +70,10 @@ class IntakeChart extends React.Component {
       <div className="container">
         <canvas id="myChart"></canvas>
         <h3>Current Stats</h3>
-        <p>Weight: 180</p>
-        <p>Body fat percentage: 17%</p>
-        <p>Lean body mass: 140</p>
-        <p>Fat mass: 40</p>
+        <p>Weight: {this.weightArray[this.weightArray.length - 1]}</p>
+        <p>Body fat percentage: {this.bfArray[this.bfArray.length - 1]}</p>
+        <p>Lean body mass: {this.lbmArray[this.lbmArray.length - 1]}</p>
+        <p>Fat mass: {this.fmArray[this.fmArray.length - 1]}</p>
       </div>
     );
   }

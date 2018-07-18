@@ -22,6 +22,7 @@ const calcFatMass = (weight,bodyFat) => weight * bodyFat/100
 const bodyMass = (weight,bodyFat) => weight - calcFatMass(weight,bodyFat);
 
 const validateBF = (body) => {
+  console.log(body)
   const {bodyFat,...idc} = body;
   if (bodyFat) return parseFloat(bodyFat).toFixed(2)
  return calcBF(body)

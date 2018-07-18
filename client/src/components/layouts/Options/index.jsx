@@ -136,7 +136,7 @@ class Options extends React.Component {
 
             <Col size="md-6">
 
-              <MainGraph weeks={this.state.weeks}
+              <MainGraph weeks={this.state.weeks} account_id={this.state.account_id}
               
               />
             </Col>
