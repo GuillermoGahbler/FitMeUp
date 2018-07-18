@@ -3,6 +3,13 @@ import { Chart } from "chart.js"
 // import "./style.css"
 
 class IntakeChart extends React.Component {
+  state = {
+    weight: this.weightArray,
+    bodyfat: this.bfArray,
+    leanbodymass: this.lbmArray,
+    fatmass: this.fmArray,
+    labels: this.labelsArray
+  }
 
   weightArray = this.props.weeks.reduce((acc, week) => [...acc, week.weight], []);
   bfArray = this.props.weeks.reduce((acc, week) => [...acc, week.bodyFat], []);
@@ -14,7 +21,7 @@ class IntakeChart extends React.Component {
 
   componentDidMount() {
     let ctx = document.getElementById('myChart').getContext('2d');
-
+    console.log(this.state)
     new Chart(ctx, {
       type: 'line',
       data: {
