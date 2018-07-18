@@ -3,8 +3,9 @@ const {Account} = require('../models')
 const getById = (id,cb) =>{
   return Account.findById(id)
   .then(account =>{
+    console.log(account);
     const values = account.dataValues;
-    const {id,name,email,google_id,createdAt,updatedAt,...user} = values;
+    const {id,name,email,google_id,password,createdAt,updatedAt,...user} = values;
     cb(user)
 })
 
