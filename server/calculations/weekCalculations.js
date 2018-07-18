@@ -7,11 +7,15 @@ const maleBF = (waist,neck,height) => {
 }
  
 const femaleBF = (waist,hip,neck,height) => {
-  return 163.205 * Math.log10(waist + hip - neck) - 97.684 * Math.log10(height) - 78.387;
+  console.log("calculating women body fat");
+  var bf = 163.205 * Math.log10(parseFloat(waist) + parseFloat(hip) - parseFloat(neck)) - 97.684 * Math.log10(parseFloat(height)) - 78.387;
+  console.log("bodyfat: " + bf);
+  return bf;
 }
 
 
 const calcBF = (body) => {
+  console.log("calculating bodyfat");
 const {gender,waist,neck,height,hip} = body;
   if (gender === 'male') return maleBF(waist,neck,height)
 return femaleBF(waist,hip,neck,height)
@@ -22,6 +26,7 @@ const calcFatMass = (weight,bodyFat) => weight * bodyFat/100
 const bodyMass = (weight,bodyFat) => weight - calcFatMass(weight,bodyFat);
 
 const validateBF = (body) => {
+  console.log(body);
   const {bodyFat,...idc} = body;
   if (bodyFat) return parseFloat(bodyFat).toFixed(2)
  return calcBF(body)

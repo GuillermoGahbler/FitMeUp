@@ -16,13 +16,23 @@ class Options extends React.Component {
     const userId = this.props.match.params.id;
     this.readAccount(userId);
     this.readDays(userId);
-    this.readWeeks(userId);
+    //this.readWeeks(userId);
+
+    
     // this.lastUpdate();    
   }
 
   readWeeks = (id)=>{
     axios.get(`/weeks/${id}`)
-    .then(res=>this.changeState('weeks',res.data))
+    .then(res=>{
+      this.changeState('weeks',res.data);
+      this.setState({
+        weeks : res.data
+      });
+
+      console.log("options state");
+      console.log(this.state);
+    })
   }
 
   readAccount = (id)=>{
@@ -136,7 +146,7 @@ class Options extends React.Component {
 
             <Col size="md-6">
 
-              <MainGraph weeks={this.state.weeks}
+              <MainGraph account_id={this.props.match.params.id}
               
               />
             </Col>
