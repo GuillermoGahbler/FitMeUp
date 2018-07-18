@@ -1,6 +1,6 @@
 
 
-const calcHeight = (feet,inches) => feet +12 * inches; 
+const calcHeight = (feet,inches) => feet * 12 + inches; 
 
 const maleBF = (waist,neck,height) => {
   return 86.010 * Math.log10( waist - neck ) - 70.041 * Math.log10(height) + 36.76;

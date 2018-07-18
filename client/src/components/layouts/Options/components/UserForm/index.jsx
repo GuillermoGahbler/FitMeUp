@@ -56,7 +56,6 @@ class UserForm extends Component {
             onChange={this.handleIntegerInputChange}
             placeholder="Calories (required)"
           />
-          <p>Calories</p>
         </div>
 
         <p>-----Or-----</p>
