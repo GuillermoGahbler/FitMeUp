@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { accountController, dayController } = require('../controllers')
-const { account } = require('../calculations')
+const { accountController, dayController,weekController } = require('../controllers')
+const { week } = require('../calculations')
 const { bcrypt } = require('../authorization')
 
 router
@@ -11,12 +11,24 @@ router
     })
   })
 
-  .put('/accts/:id', account.calculatedStats, (req, res, next) => {
-    accountController
-      .updateAccount(req.params.id, req.body, (updatedAccount) => {
-        res.json(updatedAccount);
-      })
+  .get('/weeks/:account_id',(req,res,next)=> {
+    weekController.getByAccount(req.params.account_id,(weeks)=>{
+      res.json(weeks);
+    })
   })
+
+  .post('/weeks',week.calculatedStats, (req,res,next)=> {
+    weekController.create(req.body,(data)=>{
+      res.json(data)
+    })
+  })
+
+  // .put('/accts/:id', account.calculatedStats, (req, res, next) => {
+  //   accountController
+  //     .updateAccount(req.params.id, req.body, (updatedAccount) => {
+  //       res.json(updatedAccount);
+  //     })
+  // })
 
 
   .get('/days/:userId', (req, res, next) => {

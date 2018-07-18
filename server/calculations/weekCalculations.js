@@ -29,6 +29,7 @@ const validateBF = (body) => {
 
 
 const sanitizeData = (body)=>{
+  body.account_id = body.account_id;
   body.feet = parseInt(body.feet);
   body.inches = parseInt(body.inches);
   body.weight = parseInt(body.weight);
@@ -42,6 +43,7 @@ const sanitizeData = (body)=>{
 
 const calculatedStats =(req,res,next)=>{
 req.body = sanitizeData(req.body)
+ 
 req.body.height = calcHeight(req.body.feet, req.body.inches);
 req.body.bodyFat = validateBF(req.body);
 
