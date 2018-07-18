@@ -55,10 +55,10 @@ class IntakeChart extends React.Component {
       <div className="container">
         <canvas id="myChart"></canvas>
         <h3>Current Stats</h3>
-        <p>Weight: 180</p>
+        <p>Weight in lbs: 180</p>
         <p>Body fat percentage: 17%</p>
-        <p>Lean body mass: 140</p>
-        <p>Fat mass: 40</p>
+        <p>Lean body mass in lbs: 140</p>
+        <p>Fat mass in lbs: 40</p>
       </div>
     );
   }
