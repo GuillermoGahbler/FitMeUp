@@ -32,11 +32,11 @@ const sanitizeData = (body) => {
   body.account_id = body.account_id;
   body.feet = parseInt(body.feet);
   body.inches = parseInt(body.inches);
-  body.weight = parseFloat(body.weight).toFixed(1);
-  body.hip = parseFloat(body.hip || 0).toFixed(1);
-  body.bodyMass = parseFloat(body.bodyMass).toFixed(1);
-  body.bodyFat = parseFloat(body.bodyFat).toFixed(1);
-  body.fatMass = parseFloat(body.fatMass).toFixed(1);
+  body.weight = parseFloat(body.weight).toFixed(2);
+  body.hip = parseFloat(body.hip || 0).toFixed(2);
+  body.bodyMass = parseFloat(body.bodyMass).toFixed(2);
+  body.bodyFat = parseFloat(body.bodyFat).toFixed(2);
+  body.fatMass = parseFloat(body.fatMass).toFixed(2);
   return (body)
 }
 
