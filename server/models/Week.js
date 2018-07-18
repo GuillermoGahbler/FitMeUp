@@ -18,16 +18,16 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true
     },
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
 
     neck: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     waist: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     bodyMass: {
