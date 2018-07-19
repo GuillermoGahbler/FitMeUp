@@ -127,16 +127,16 @@ class Options extends React.Component {
 
           <Row>
             <button
-              className="d-flex justify-content-center"
+              className="d-flex justify-content-center btn btn-info"
               onClick={this.closeStats}
             >Enter current stats
           </button>
 
           </Row>
 
-          <Row className="justify-content-center">
+          {/* <Row className="justify-content-center">
             <Error message={"This is an error"} />
-          </Row>
+          </Row> */}
 
           <Row>
 
