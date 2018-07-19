@@ -22,6 +22,7 @@ class LoseWeight extends React.Component {
     event.preventDefault();
     this.props.updateUserStats(this.state)
     this.props.closeModal()
+
   }
 
   handleInputChange = (event) => {
@@ -34,7 +35,7 @@ class LoseWeight extends React.Component {
 
   
   render() {
-
+    
     const showFemale = () =>{
       return (
         <span>
@@ -99,6 +100,7 @@ class LoseWeight extends React.Component {
             className="btn btn-success"
             onClick={this.formSubmit}>
             submit
+            
           </button>
 
           <button className="btn btn-primary"
