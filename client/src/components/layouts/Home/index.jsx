@@ -50,7 +50,7 @@ class Home extends React.Component {
 
           }
         </div>
-
+           <footer className='disclaimerStyle'> <a href="#/disclaimer">Disclaimer</a></footer>     
       </div>
     )
   }
