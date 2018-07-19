@@ -101,7 +101,7 @@ class Options extends React.Component {
             <button
                className="d-flex justify-content-center btn btn-info statsButton"
               onClick={this.closeStats}
-            >Enter current stats
+            >Enter user stats weekly
           </button>
 
           </Row>
