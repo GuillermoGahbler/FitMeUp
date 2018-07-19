@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {Col, Container, Row, MacroPieChart, CalorieBarChart, UserForm, Error, MainGraph, LoseWeight} from './components';
+import "./index.css";
 
 class Options extends React.Component {
   state = {
@@ -98,7 +99,7 @@ class Options extends React.Component {
 
           <Row>
             <button
-              className="d-flex justify-content-center btn btn-info"
+               className="d-flex justify-content-center btn btn-info statsButton"
               onClick={this.closeStats}
             >Enter current stats
           </button>

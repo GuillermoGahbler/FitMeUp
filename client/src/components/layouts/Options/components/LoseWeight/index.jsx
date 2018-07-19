@@ -81,7 +81,7 @@ class LoseWeight extends React.Component {
             {this.state.gender === 'female' && showFemale()}
           </fieldset>
 
-          <fieldset>
+          {/* <fieldset>
             <label> Lose weight</label>
             <input type='radio' name='goal' value='lose'
             onChange = {this.handleInputChange}
@@ -94,7 +94,7 @@ class LoseWeight extends React.Component {
             <input type='radio' name='goal' value='maintain'
             onChange = {this.handleInputChange}
             />
-          </fieldset>  
+          </fieldset>   */}
 
           <button
             className="btn btn-success"

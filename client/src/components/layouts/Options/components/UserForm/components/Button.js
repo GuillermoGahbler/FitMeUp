@@ -3,7 +3,7 @@ import React from "react";
 const Button = props => {
  return (
   <button {...props}
-  style={{ float: "left", marginBottom: 10 }} 
+  style={{ float: "left", marginBottom: 10, marginLeft: 10}} 
   className={`btn ${props.btncolor}`} 
   >
   
