@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './index.css'
 const Disclaimer = () =>{
   return(
     <div className="App">
@@ -23,10 +23,11 @@ const Disclaimer = () =>{
     <footer> 
     <img className="img-giphy" src="https://media.giphy.com/media/3o85xunRezGKPOkcG4/giphy.gif" alt="logo"/>
     <div className="theButtons">
-    
-            <button className="RegisterBtn btn-success">Fit Me Up now!</button>
+                
+            <a href="#/">back to home</a>
     </div>
     </footer>  
+          
 
   </div>
   </div>
