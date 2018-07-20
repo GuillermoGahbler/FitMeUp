@@ -1,11 +1,10 @@
 const {Account} = require('../models')
 
-const getById = (id,cb) =>{
-  return Account.findById(id)
+const getById = (account_id,cb) =>{
+  return Account.findById(account_id)
   .then(account =>{
-    const values = account.dataValues;
-    const {id,name,email,google_id,createdAt,updatedAt,...user} = values;
-    cb(user)
+
+    cb({})
 })
 
 }
